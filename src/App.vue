@@ -1,6 +1,4 @@
 <script setup lang="ts">
-const str: string = 1;
-console.log(str);
 </script>
 
 <template>
