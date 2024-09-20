@@ -50,7 +50,7 @@
     "vue-tsc": "^2.1.6"
   },
   "lint-staged": {
-    "*.{js,mjs,cjs,jsx,ts,tsx,vue}": [
+    "src/*.{js,mjs,cjs,jsx,ts,tsx,vue}": [
       "npx eslint --fix",
       "npx vue-tsc --noEmit"
     ]
