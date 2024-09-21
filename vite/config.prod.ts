@@ -8,7 +8,6 @@ import svgLoader from "vite-svg-loader";
 export default defineConfig({
 	base: "/core-ui/",
 	plugins: [vue(), svgLoader(), dts({
-		rollupTypes: true,
 		tsconfigPath: "tsconfig.build.json",
 	})],
 	resolve: {
@@ -29,7 +28,8 @@ export default defineConfig({
 		outDir: "dist",
 		lib: {
 			entry: {
-				index: "src/index.ts",
+				"components/BaseButton.vue": "src/components/BaseButton.ts",
+				"components/BaseContextMenu.vue": "src/components/BaseContextMenu.ts",
 			},
 			formats: ["es"],
 		},
