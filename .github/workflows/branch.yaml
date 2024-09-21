@@ -29,4 +29,4 @@ jobs:
           node-version: "lts/*"
       - run: npm ci
       - name: UI TypeScript Error Free
-        run: npx vue-tsc --noEmit
+        run: npx vue-tsc --noEmit -p tsconfig.build.json
