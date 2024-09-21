@@ -31,12 +31,11 @@
         }
     },
     "include": [
-        "src/components/BaseButton.ts",
-        "src/components/BaseButton.vue",
-        "src/components/BaseContextMenu.vue",
-        "src/components/BaseContextMenu.ts",
-        "src/types/components.ts",
-        "src/utils/menu.ts"
+        "src/components/**/*",
+        "src/utils/**/*",
+        "src/types/**/*",
+        "src/assets/**/*.vue",
+        "src/vite-env.d.ts"
     ],
-    "exclude": ["node_modules", "src/App.vue", "src/main.ts", "src/router.ts", "src/assets/theme", "src/indices"],
+    "exclude": ["node_modules", "src/App.vue", "src/main.ts", "src/router.ts", "src/assets/theme", "src/indices"]
 }

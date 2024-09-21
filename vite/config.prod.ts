@@ -5,6 +5,20 @@ import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 import svgLoader from "vite-svg-loader";
 
+const entries: Record<string, string> = {};
+glob.sync("src/components/**/*.ts").forEach((file) => {
+	entries[file.replace(/\\/g, "/").replace("src/", "").replace(".ts", "")] = file;
+});
+glob.sync("src/utils/**/*.ts").forEach((file) => {
+	entries[file.replace(/\\/g, "/").replace("src/", "").replace(".ts", "")] = file;
+});
+glob.sync("src/types/**/*.ts").forEach((file) => {
+	entries[file.replace(/\\/g, "/").replace("src/", "").replace(".ts", "")] = file;
+});
+glob.sync("src/assets/**/*.ts").forEach((file) => {
+	entries[file.replace(/\\/g, "/").replace("src/", "").replace(".ts", "")] = file;
+});
+
 export default defineConfig({
 	base: "/core-ui/",
 	plugins: [vue(), svgLoader(), dts({
@@ -27,10 +41,7 @@ export default defineConfig({
 		emptyOutDir: true,
 		outDir: "dist",
 		lib: {
-			entry: {
-				"components/BaseButton": "src/components/BaseButton.ts",
-				"components/BaseContextMenu": "src/components/BaseContextMenu.ts",
-			},
+			entry: entries,
 			formats: ["es"],
 		},
 		rollupOptions: {
