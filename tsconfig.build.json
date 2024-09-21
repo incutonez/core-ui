@@ -32,10 +32,10 @@
         }
     },
     "include": [
-        "src/**/*.js",
-        "src/**/*.ts",
-        "src/**/*.tsx",
-        "src/**/*.vue",
+        "src/components/BaseButton.vue",
+        "src/components/BaseContextMenu.vue",
+        "src/types/components.ts",
+        "src/utils/menu.ts"
     ],
     "exclude": ["node_modules", "src/App.vue", "src/main.ts", "src/router.ts", "src/assets/theme", "src/indices"],
 }
