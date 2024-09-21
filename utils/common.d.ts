@@ -1,0 +1,12 @@
+export { default as clone } from 'just-clone';
+export declare function isString(value: unknown): value is string;
+export declare function toInt(value: string, radix?: number): number;
+export declare function makeArray(value: unknown): any[];
+export declare function isEmpty(value: unknown): boolean;
+export declare function isFunction(value: unknown): value is (...args: unknown[]) => unknown;
+export declare function isObject(value?: unknown): value is object;
+export declare function pluck<T = unknown>(items: object[], keys: string | string[]): T[];
+export declare function getObjectValue(data: object, key: string): any;
+export declare function removeItem(items: unknown[], item: unknown): void;
+export declare function dateLongFormat(value: string | number | Date): string;
+export declare function downloadFile(blob: Blob, name?: string): void;
