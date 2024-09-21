@@ -80,5 +80,8 @@
       "@semantic-release/git",
       "@semantic-release/github"
     ]
+  },
+  "exports": {
+    "./components/*": "./src/components/*"
   }
 }
