@@ -1,11 +1,16 @@
 import vue from "@vitejs/plugin-vue";
+import { glob } from "glob";
 import path from "path";
 import { defineConfig } from "vite";
+import dts from "vite-plugin-dts";
 import svgLoader from "vite-svg-loader";
 
 export default defineConfig({
 	base: "/core-ui/",
-	plugins: [vue(), svgLoader()],
+	plugins: [vue(), svgLoader(), dts({
+		copyDtsFiles: true,
+		tsconfigPath: "./tsconfig.build.json",
+	})],
 	resolve: {
 		alias: [{
 			find: "@",
@@ -20,6 +25,20 @@ export default defineConfig({
 		}],
 	},
 	build: {
+		emptyOutDir: true,
 		outDir: "dist",
+		lib: {
+			entry: Object.fromEntries(glob.sync("./src/indices/**/*.ts").map((file) => {
+				return [file.replace("src\\indices\\", "").replace(/\.ts$/, "").replace(/\\/g, "/"), file];
+			})),
+			formats: ["es"],
+		},
+		rollupOptions: {
+			external: ["vue"],
+			output: {
+				dir: "dist",
+				format: "es",
+			},
+		},
 	},
 });

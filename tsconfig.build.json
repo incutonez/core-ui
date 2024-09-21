@@ -8,6 +8,8 @@
         "allowJs": true,
         "outDir": "dist",
         "declaration": true,
+        "emitDeclarationOnly": true,
+        "rootDir": "src",
         "lib": [
             "ES2020",
             "DOM",
@@ -31,11 +33,10 @@
         }
     },
     "include": [
-        "src/**/*.ts",
         "src/**/*.js",
+        "src/**/*.ts",
         "src/**/*.tsx",
         "src/**/*.vue",
-        "vite/**/*.ts"
     ],
-    "exclude": ["node_modules"],
+    "exclude": ["node_modules", "src/App.vue", "src/main.ts", "src/router.ts", "src/assets.ts", "src/components.ts", "src/types.ts", "src/utils.ts", "src/assets/theme", "src/vite-env.d.ts"],
 }
