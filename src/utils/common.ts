@@ -1,6 +1,6 @@
 import get from "just-safe-get";
 import { isFunction as lodashIsFunction, isObject as lodashIsObject } from "lodash-es";
-import MimeTypes from "mime-types";
+import { extension } from "mime-types";
 
 export { default as clone } from "just-clone";
 
@@ -76,8 +76,8 @@ export function dateLongFormat(value: string | number | Date) {
 }
 
 export function downloadFile(blob: Blob, name = "download") {
-	const extension = MimeTypes.extension(blob.type);
-	if (!extension) {
+	const fileExt = extension(blob.type);
+	if (!fileExt) {
 		return;
 	}
 	const url = window.URL.createObjectURL(blob);
@@ -85,7 +85,7 @@ export function downloadFile(blob: Blob, name = "download") {
 	a.style.display = "none";
 	a.href = url;
 	// the filename you want
-	a.download = `${name}.${extension}`;
+	a.download = `${name}.${fileExt}`;
 	document.body.appendChild(a);
 	a.click();
 	window.URL.revokeObjectURL(url);
