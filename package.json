@@ -2,7 +2,7 @@
   "name": "@incutonez/core-ui",
   "description": "Core UI Components built with PrimeVue",
   "type": "module",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/incutonez/core-ui.git"
