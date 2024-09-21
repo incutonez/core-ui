@@ -1,4 +1,4 @@
-import { renderSlot as M, openBlock as m, createBlock as I, Teleport as Z, createCommentVNode as b, createElementBlock as h, mergeProps as d, createElementVNode as C, resolveComponent as g, resolveDirective as G, Transition as D, withCtx as w, Fragment as y, renderList as N, withDirectives as U, resolveDynamicComponent as L, normalizeClass as K, toDisplayString as H, createVNode as E, defineComponent as j, ref as W, computed as X, unref as Y } from "vue";
+import { renderSlot as M, openBlock as m, createBlock as I, Teleport as Z, createCommentVNode as b, createElementBlock as h, mergeProps as d, createElementVNode as C, resolveComponent as g, resolveDirective as G, Transition as D, withCtx as w, Fragment as y, renderList as N, withDirectives as U, resolveDynamicComponent as L, normalizeClass as K, toDisplayString as j, createVNode as E, defineComponent as H, ref as W, computed as X, unref as Y } from "vue";
 import { c as q, B as J, s as Q, U as A, i as p, r as V, f as x, d as $, a as S, e as k, g as ee, h as te, j as ne, k as ie, l as oe, m as F, b as T, n as se, R as re } from "../index-C0xNhkc9.js";
 function ae() {
   let n = [];
@@ -486,7 +486,7 @@ function ge(n, e, t, o, r, i) {
           id: i.getItemLabelId(s),
           class: n.cx("itemLabel"),
           ref_for: !0
-        }, i.getPTOptions("itemLabel", s, l)), H(i.getItemLabel(s)), 17, ve), i.getItemProp(s, "items") ? (m(), h(y, {
+        }, i.getPTOptions("itemLabel", s, l)), j(i.getItemLabel(s)), 17, ve), i.getItemProp(s, "items") ? (m(), h(y, {
           key: 2
         }, [t.templates.submenuicon ? (m(), I(L(t.templates.submenuicon), {
           key: 0,
@@ -1007,7 +1007,7 @@ function B({ text: n, icon: e, visible: t, click: o, items: r, iconCls: i }) {
     items: r == null ? void 0 : r.map((a) => B(a))
   };
 }
-const Pe = /* @__PURE__ */ j({
+const Le = /* @__PURE__ */ H({
   __name: "BaseContextMenu",
   props: {
     items: {}
@@ -1031,7 +1031,10 @@ const Pe = /* @__PURE__ */ j({
       model: r.value
     }, null, 8, ["model"]));
   }
-});
+}), Ce = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: Le
+}, Symbol.toStringTag, { value: "Module" }));
 export {
-  Pe as BaseContextMenu
+  Ce as default
 };

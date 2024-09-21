@@ -1,10 +1,10 @@
-import { openBlock as a, createElementBlock as s, mergeProps as e, createElementVNode as v, renderSlot as d, createTextVNode as P, toDisplayString as f, resolveComponent as g, resolveDirective as A, withDirectives as T, createBlock as u, resolveDynamicComponent as y, withCtx as k, normalizeClass as i, createCommentVNode as h, defineComponent as N, unref as j } from "vue";
-import { s as O, B as m, i as E, a as x, b as w, R as F } from "../index-C0xNhkc9.js";
+import { openBlock as a, createElementBlock as s, mergeProps as e, createElementVNode as v, renderSlot as d, createTextVNode as P, toDisplayString as f, resolveComponent as g, resolveDirective as A, withDirectives as T, createBlock as u, resolveDynamicComponent as y, withCtx as k, normalizeClass as i, createCommentVNode as h, defineComponent as j, unref as O } from "vue";
+import { s as N, B as m, i as E, a as x, b as w, R as F } from "../index-C0xNhkc9.js";
 var C = {
   name: "SpinnerIcon",
-  extends: O
+  extends: N
 };
-function D(o, t, n, r, p, l) {
+function D(o, t, n, r, p, b) {
   return a(), s("svg", e({
     width: "14",
     height: "14",
@@ -112,11 +112,11 @@ var L = function(t) {
       "p-badge-contrast": n.severity === "contrast"
     }];
   }
-}, R = m.extend({
+}, M = m.extend({
   name: "badge",
   theme: L,
   classes: V
-}), U = {
+}), R = {
   name: "BaseBadge",
   extends: w,
   props: {
@@ -133,7 +133,7 @@ var L = function(t) {
       default: null
     }
   },
-  style: R,
+  style: M,
   provide: function() {
     return {
       $pcBadge: this,
@@ -142,38 +142,38 @@ var L = function(t) {
   }
 }, B = {
   name: "Badge",
-  extends: U,
+  extends: R,
   inheritAttrs: !1
 };
-function K(o, t, n, r, p, l) {
+function U(o, t, n, r, p, b) {
   return a(), s("span", e({
     class: o.cx("root")
   }, o.ptmi("root")), [d(o.$slots, "default", {}, function() {
     return [P(f(o.value), 1)];
   })], 16);
 }
-B.render = K;
-function b(o) {
+B.render = U;
+function l(o) {
   "@babel/helpers - typeof";
-  return b = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(t) {
+  return l = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(t) {
     return typeof t;
   } : function(t) {
     return t && typeof Symbol == "function" && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t;
-  }, b(o);
+  }, l(o);
 }
 function c(o, t, n) {
-  return (t = M(t)) in o ? Object.defineProperty(o, t, { value: n, enumerable: !0, configurable: !0, writable: !0 }) : o[t] = n, o;
+  return (t = K(t)) in o ? Object.defineProperty(o, t, { value: n, enumerable: !0, configurable: !0, writable: !0 }) : o[t] = n, o;
 }
-function M(o) {
+function K(o) {
   var t = Z(o, "string");
-  return b(t) == "symbol" ? t : t + "";
+  return l(t) == "symbol" ? t : t + "";
 }
 function Z(o, t) {
-  if (b(o) != "object" || !o) return o;
+  if (l(o) != "object" || !o) return o;
   var n = o[Symbol.toPrimitive];
   if (n !== void 0) {
     var r = n.call(o, t || "default");
-    if (b(r) != "object") return r;
+    if (l(r) != "object") return r;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
   return (t === "string" ? String : Number)(o);
@@ -949,16 +949,16 @@ var q = function(t) {
     ripple: F
   }
 };
-function Q(o, t, n, r, p, l) {
+function Q(o, t, n, r, p, b) {
   var z = g("SpinnerIcon"), S = g("Badge"), I = A("ripple");
   return o.asChild ? d(o.$slots, "default", {
     key: 1,
     class: i(o.cx("root")),
-    a11yAttrs: l.a11yAttrs
+    a11yAttrs: b.a11yAttrs
   }) : T((a(), u(y(o.as), e({
     key: 0,
     class: o.cx("root")
-  }, l.attrs), {
+  }, b.attrs), {
     default: k(function() {
       return [d(o.$slots, "default", {}, function() {
         return [o.loading ? d(o.$slots, "loadingicon", {
@@ -996,7 +996,7 @@ function Q(o, t, n, r, p, l) {
   }, 16, ["class"])), [[I]]);
 }
 $.render = Q;
-const Y = /* @__PURE__ */ N({
+const W = /* @__PURE__ */ j({
   __name: "BaseButton",
   props: {
     text: { default: void 0 },
@@ -1008,7 +1008,7 @@ const Y = /* @__PURE__ */ N({
     plain: { type: Boolean }
   },
   setup(o) {
-    return (t, n) => (a(), u(j($), {
+    return (t, n) => (a(), u(O($), {
       label: t.text,
       disabled: t.disabled,
       size: t.size,
@@ -1025,7 +1025,10 @@ const Y = /* @__PURE__ */ N({
       _: 3
     }, 8, ["label", "disabled", "size", "plain", "loading"]));
   }
-});
+}), _ = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: W
+}, Symbol.toStringTag, { value: "Module" }));
 export {
-  Y as BaseButton
+  _ as default
 };
