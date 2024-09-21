@@ -34,6 +34,9 @@ jobs:
         run: npx semantic-release --deps.bump=inherit
       - name: Build UI
         run: npm run build
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
