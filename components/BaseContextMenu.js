@@ -1,60 +1,10 @@
-import { renderSlot as M, openBlock as m, createBlock as I, Teleport as Z, createCommentVNode as b, createElementBlock as h, mergeProps as d, createElementVNode as C, resolveComponent as g, resolveDirective as G, Transition as D, withCtx as w, Fragment as y, renderList as N, withDirectives as U, resolveDynamicComponent as L, normalizeClass as K, toDisplayString as j, createVNode as E, defineComponent as H, ref as W, computed as X, unref as Y } from "vue";
-import { c as q, B as J, s as Q, U as A, i as p, r as V, f as x, d as $, a as S, e as k, g as ee, h as te, j as ne, k as ie, l as oe, m as F, b as T, n as se, R as re } from "../index-C0xNhkc9.js";
-function ae() {
-  let n = [];
-  const e = (a, u, c = 999) => {
-    const s = r(a, u, c), l = s.value + (s.key === a ? 0 : c) + 1;
-    return n.push({ key: a, value: l }), l;
-  }, t = (a) => {
-    n = n.filter((u) => u.value !== a);
-  }, o = (a, u) => r(a).value, r = (a, u, c = 0) => [...n].reverse().find((s) => !0) || { key: a, value: c }, i = (a) => a && parseInt(a.style.zIndex, 10) || 0;
-  return {
-    get: i,
-    set: (a, u, c) => {
-      u && (u.style.zIndex = String(e(a, !0, c)));
-    },
-    clear: (a) => {
-      a && (t(i(a)), a.style.zIndex = "");
-    },
-    getCurrent: (a) => o(a)
-  };
-}
-var P = ae(), z = {
-  name: "Portal",
-  props: {
-    appendTo: {
-      type: [String, Object],
-      default: "body"
-    },
-    disabled: {
-      type: Boolean,
-      default: !1
-    }
-  },
-  data: function() {
-    return {
-      mounted: !1
-    };
-  },
-  mounted: function() {
-    this.mounted = q();
-  },
-  computed: {
-    inline: function() {
-      return this.disabled || this.appendTo === "self";
-    }
-  }
-};
-function ue(n, e, t, o, r, i) {
-  return i.inline ? M(n.$slots, "default", {
-    key: 0
-  }) : r.mounted ? (m(), I(Z, {
-    key: 1,
-    to: t.appendTo
-  }, [M(n.$slots, "default")], 8, ["to"])) : b("", !0);
-}
-z.render = ue;
-var ce = function(e) {
+import { mergeProps as m, resolveComponent as g, resolveDirective as z, openBlock as c, createBlock as I, Transition as F, withCtx as C, createElementBlock as h, Fragment as y, renderList as O, createElementVNode as w, withDirectives as R, resolveDynamicComponent as L, normalizeClass as K, createCommentVNode as b, toDisplayString as B, createVNode as M, defineComponent as G, ref as N, computed as H, unref as U } from "vue";
+import { B as Z, U as E, c as p, C as D, f as x, D as W, i as A, y as k, o as X, K as Y, L as j, M as q, H as J, I as S, s as V, J as Q } from "../index-CJIVb0yO.js";
+import { Z as P, s as $ } from "../index-C9ZTedje.js";
+import { s as ee } from "../index-BNT1ApyO.js";
+import { R as te } from "../index-DeU8Bpar.js";
+import { getMenuItemProps as ne } from "../utils/menu.js";
+var ie = function(e) {
   var t = e.dt;
   return `
 .p-contextmenu {
@@ -181,7 +131,7 @@ var ce = function(e) {
     transition: opacity 250ms;
 }
 `);
-}, me = {
+}, oe = {
   root: "p-contextmenu p-component",
   rootList: "p-contextmenu-root-list",
   item: function(e) {
@@ -199,30 +149,13 @@ var ce = function(e) {
   submenuIcon: "p-contextmenu-submenu-icon",
   submenu: "p-contextmenu-submenu",
   separator: "p-contextmenu-separator"
-}, le = J.extend({
+}, se = Z.extend({
   name: "contextmenu",
-  theme: ce,
-  classes: me
-}), _ = {
-  name: "AngleRightIcon",
-  extends: Q
-};
-function de(n, e, t, o, r, i) {
-  return m(), h("svg", d({
-    width: "14",
-    height: "14",
-    viewBox: "0 0 14 14",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, n.pti()), e[0] || (e[0] = [C("path", {
-    d: "M5.25 11.1728C5.14929 11.1694 5.05033 11.1455 4.9592 11.1025C4.86806 11.0595 4.78666 10.9984 4.72 10.9228C4.57955 10.7822 4.50066 10.5916 4.50066 10.3928C4.50066 10.1941 4.57955 10.0035 4.72 9.86283L7.72 6.86283L4.72 3.86283C4.66067 3.71882 4.64765 3.55991 4.68275 3.40816C4.71785 3.25642 4.79932 3.11936 4.91585 3.01602C5.03238 2.91268 5.17819 2.84819 5.33305 2.83149C5.4879 2.81479 5.64411 2.84671 5.78 2.92283L9.28 6.42283C9.42045 6.56346 9.49934 6.75408 9.49934 6.95283C9.49934 7.15158 9.42045 7.34221 9.28 7.48283L5.78 10.9228C5.71333 10.9984 5.63193 11.0595 5.5408 11.1025C5.44966 11.1455 5.35071 11.1694 5.25 11.1728Z",
-    fill: "currentColor"
-  }, null, -1)]), 16);
-}
-_.render = de;
-var fe = {
+  theme: ie,
+  classes: oe
+}), re = {
   name: "BaseContextMenu",
-  extends: T,
+  extends: V,
   props: {
     model: {
       type: Array,
@@ -257,17 +190,17 @@ var fe = {
       default: null
     }
   },
-  style: le,
+  style: se,
   provide: function() {
     return {
       $pcContextMenu: this,
       $parentInstance: this
     };
   }
-}, O = {
+}, T = {
   name: "ContextMenuSub",
   hostName: "ContextMenu",
-  extends: T,
+  extends: V,
   emits: ["item-click", "item-mouseenter", "item-mousemove"],
   props: {
     items: {
@@ -315,7 +248,7 @@ var fe = {
       return this.getItemId(e);
     },
     getItemProp: function(e, t, o) {
-      return e && e.item ? V(e.item[t], o) : void 0;
+      return e && e.item ? D(e.item[t], o) : void 0;
     },
     getItemLabel: function(e) {
       return this.getItemProp(e, "label");
@@ -387,49 +320,49 @@ var fe = {
       }).length + 1;
     },
     onEnter: function() {
-      se(this.$refs.container, this.level);
+      Q(this.$refs.container, this.level);
     },
     getMenuItemProps: function(e, t) {
       return {
-        action: d({
+        action: m({
           class: this.cx("itemLink"),
           tabindex: -1,
           "aria-hidden": !0
         }, this.getPTOptions("itemLink", e, t)),
-        icon: d({
+        icon: m({
           class: [this.cx("itemIcon"), this.getItemProp(e, "icon")]
         }, this.getPTOptions("itemIcon", e, t)),
-        label: d({
+        label: m({
           class: this.cx("itemLabel")
         }, this.getPTOptions("itemLabel", e, t)),
-        submenuicon: d({
+        submenuicon: m({
           class: this.cx("submenuIcon")
         }, this.getPTOptions("submenuicon", e, t))
       };
     }
   },
   components: {
-    AngleRightIcon: _
+    AngleRightIcon: ee
   },
   directives: {
-    ripple: re
+    ripple: te
   }
-}, he = ["tabindex"], Ie = ["id", "aria-label", "aria-disabled", "aria-expanded", "aria-haspopup", "aria-level", "aria-setsize", "aria-posinset", "data-p-active", "data-p-focused", "data-p-disabled"], be = ["onClick", "onMouseenter", "onMousemove"], pe = ["href", "target"], ve = ["id"], xe = ["id"];
-function ge(n, e, t, o, r, i) {
-  var a = g("AngleRightIcon"), u = g("ContextMenuSub", !0), c = G("ripple");
-  return m(), I(D, d({
+}, ae = ["tabindex"], ue = ["id", "aria-label", "aria-disabled", "aria-expanded", "aria-haspopup", "aria-level", "aria-setsize", "aria-posinset", "data-p-active", "data-p-focused", "data-p-disabled"], ce = ["onClick", "onMouseenter", "onMousemove"], me = ["href", "target"], le = ["id"], de = ["id"];
+function fe(n, e, t, o, r, i) {
+  var a = g("AngleRightIcon"), u = g("ContextMenuSub", !0), d = z("ripple");
+  return c(), I(F, m({
     name: "p-contextmenusub",
     onEnter: i.onEnter
   }, n.ptm("menu.transition")), {
-    default: w(function() {
-      return [t.root || t.visible ? (m(), h("ul", d({
+    default: C(function() {
+      return [t.root || t.visible ? (c(), h("ul", m({
         key: 0,
         ref: "container",
         tabindex: t.tabindex
-      }, n.ptm("rootList")), [(m(!0), h(y, null, N(t.items, function(s, l) {
-        return m(), h(y, {
+      }, n.ptm("rootList")), [(c(!0), h(y, null, O(t.items, function(s, l) {
+        return c(), h(y, {
           key: i.getItemKey(s)
-        }, [i.isItemVisible(s) && !i.getItemProp(s, "separator") ? (m(), h("li", d({
+        }, [i.isItemVisible(s) && !i.getItemProp(s, "separator") ? (c(), h("li", m({
           key: 0,
           id: i.getItemId(s),
           style: i.getItemProp(s, "style"),
@@ -449,7 +382,7 @@ function ge(n, e, t, o, r, i) {
           "data-p-active": i.isItemActive(s),
           "data-p-focused": i.isItemFocused(s),
           "data-p-disabled": i.isItemDisabled(s)
-        }), [C("div", d({
+        }), [w("div", m({
           class: n.cx("itemContent"),
           onClick: function(v) {
             return i.onItemClick(v, s);
@@ -461,42 +394,42 @@ function ge(n, e, t, o, r, i) {
             return i.onItemMouseMove(v, s);
           },
           ref_for: !0
-        }, i.getPTOptions("itemContent", s, l)), [t.templates.item ? (m(), I(L(t.templates.item), {
+        }, i.getPTOptions("itemContent", s, l)), [t.templates.item ? (c(), I(L(t.templates.item), {
           key: 1,
           item: s.item,
           hasSubmenu: i.getItemProp(s, "items"),
           label: i.getItemLabel(s),
           props: i.getMenuItemProps(s, l)
-        }, null, 8, ["item", "hasSubmenu", "label", "props"])) : U((m(), h("a", d({
+        }, null, 8, ["item", "hasSubmenu", "label", "props"])) : R((c(), h("a", m({
           key: 0,
           href: i.getItemProp(s, "url"),
           class: n.cx("itemLink"),
           target: i.getItemProp(s, "target"),
           tabindex: "-1",
           ref_for: !0
-        }, i.getPTOptions("itemLink", s, l)), [t.templates.itemicon ? (m(), I(L(t.templates.itemicon), {
+        }, i.getPTOptions("itemLink", s, l)), [t.templates.itemicon ? (c(), I(L(t.templates.itemicon), {
           key: 0,
           item: s.item,
           class: K(n.cx("itemIcon"))
-        }, null, 8, ["item", "class"])) : i.getItemProp(s, "icon") ? (m(), h("span", d({
+        }, null, 8, ["item", "class"])) : i.getItemProp(s, "icon") ? (c(), h("span", m({
           key: 1,
           class: [n.cx("itemIcon"), i.getItemProp(s, "icon")],
           ref_for: !0
-        }, i.getPTOptions("itemIcon", s, l)), null, 16)) : b("", !0), C("span", d({
+        }, i.getPTOptions("itemIcon", s, l)), null, 16)) : b("", !0), w("span", m({
           id: i.getItemLabelId(s),
           class: n.cx("itemLabel"),
           ref_for: !0
-        }, i.getPTOptions("itemLabel", s, l)), j(i.getItemLabel(s)), 17, ve), i.getItemProp(s, "items") ? (m(), h(y, {
+        }, i.getPTOptions("itemLabel", s, l)), B(i.getItemLabel(s)), 17, le), i.getItemProp(s, "items") ? (c(), h(y, {
           key: 2
-        }, [t.templates.submenuicon ? (m(), I(L(t.templates.submenuicon), {
+        }, [t.templates.submenuicon ? (c(), I(L(t.templates.submenuicon), {
           key: 0,
           active: i.isItemActive(s),
           class: K(n.cx("submenuIcon"))
-        }, null, 8, ["active", "class"])) : (m(), I(a, d({
+        }, null, 8, ["active", "class"])) : (c(), I(a, m({
           key: 1,
           class: n.cx("submenuIcon"),
           ref_for: !0
-        }, i.getPTOptions("submenuicon", s, l)), null, 16, ["class"]))], 64)) : b("", !0)], 16, pe)), [[c]])], 16, be), i.isItemVisible(s) && i.isItemGroup(s) ? (m(), I(u, d({
+        }, i.getPTOptions("submenuicon", s, l)), null, 16, ["class"]))], 64)) : b("", !0)], 16, me)), [[d]])], 16, ce), i.isItemVisible(s) && i.isItemGroup(s) ? (c(), I(u, m({
           key: 0,
           id: i.getItemId(s) + "_list",
           role: "menu",
@@ -521,23 +454,23 @@ function ge(n, e, t, o, r, i) {
           }),
           "aria-labelledby": i.getItemLabelId(s),
           ref_for: !0
-        }, n.ptm("submenu")), null, 16, ["id", "class", "menuId", "focusedItemId", "items", "templates", "activeItemPath", "level", "visible", "pt", "unstyled", "aria-labelledby"])) : b("", !0)], 16, Ie)) : b("", !0), i.isItemVisible(s) && i.getItemProp(s, "separator") ? (m(), h("li", d({
+        }, n.ptm("submenu")), null, 16, ["id", "class", "menuId", "focusedItemId", "items", "templates", "activeItemPath", "level", "visible", "pt", "unstyled", "aria-labelledby"])) : b("", !0)], 16, ue)) : b("", !0), i.isItemVisible(s) && i.getItemProp(s, "separator") ? (c(), h("li", m({
           key: 1,
           id: i.getItemId(s),
           style: i.getItemProp(s, "style"),
           class: [n.cx("separator"), i.getItemProp(s, "class")],
           role: "separator",
           ref_for: !0
-        }, n.ptm("separator")), null, 16, xe)) : b("", !0)], 64);
-      }), 128))], 16, he)) : b("", !0)];
+        }, n.ptm("separator")), null, 16, de)) : b("", !0)], 64);
+      }), 128))], 16, ae)) : b("", !0)];
     }),
     _: 1
   }, 16, ["onEnter"]);
 }
-O.render = ge;
-var R = {
+T.render = fe;
+var _ = {
   name: "ContextMenu",
-  extends: fe,
+  extends: re,
   inheritAttrs: !1,
   emits: ["focus", "blur", "show", "hide", "before-show", "before-hide"],
   target: null,
@@ -564,21 +497,21 @@ var R = {
   },
   watch: {
     "$attrs.id": function(e) {
-      this.id = e || A();
+      this.id = e || E();
     },
     activeItemPath: function(e) {
       p(e) ? (this.bindOutsideClickListener(), this.bindResizeListener()) : this.visible || (this.unbindOutsideClickListener(), this.unbindResizeListener());
     }
   },
   mounted: function() {
-    this.id = this.id || A(), this.global && this.bindDocumentContextMenuListener();
+    this.id = this.id || E(), this.global && this.bindDocumentContextMenuListener();
   },
   beforeUnmount: function() {
     this.unbindResizeListener(), this.unbindOutsideClickListener(), this.unbindDocumentContextMenuListener(), this.container && this.autoZIndex && P.clear(this.container), this.target = null, this.container = null;
   },
   methods: {
     getItemProp: function(e, t) {
-      return e ? V(e[t]) : void 0;
+      return e ? D(e[t]) : void 0;
     },
     getItemLabel: function(e) {
       return this.getItemProp(e, "label");
@@ -673,14 +606,14 @@ var R = {
         case "ShiftRight":
           break;
         default:
-          !t && $(e.key) && this.searchItems(e, e.key);
+          !t && W(e.key) && this.searchItems(e, e.key);
           break;
       }
     },
     onItemChange: function(e) {
       var t = e.processedItem, o = e.isFocus;
-      if (!S(t)) {
-        var r = t.index, i = t.key, a = t.level, u = t.parentKey, c = t.items, s = p(c), l = this.activeItemPath.filter(function(f) {
+      if (!A(t)) {
+        var r = t.index, i = t.key, a = t.level, u = t.parentKey, d = t.items, s = p(d), l = this.activeItemPath.filter(function(f) {
           return f.parentKey !== u && f.parentKey !== i;
         });
         s && (l.push(t), this.submenuVisible = !0), this.focusedItemInfo = {
@@ -693,13 +626,13 @@ var R = {
     onItemClick: function(e) {
       var t = e.processedItem, o = this.isProccessedItemGroup(t), r = this.isSelected(t);
       if (r) {
-        var i = t.index, a = t.key, u = t.level, c = t.parentKey;
+        var i = t.index, a = t.key, u = t.level, d = t.parentKey;
         this.activeItemPath = this.activeItemPath.filter(function(s) {
           return a !== s.key && a.startsWith(s.key);
         }), this.focusedItemInfo = {
           index: i,
           level: u,
-          parentKey: c
+          parentKey: d
         }, x(this.list);
       } else
         o ? this.onItemChange(e) : this.hide();
@@ -732,7 +665,7 @@ var R = {
     onArrowLeftKey: function(e) {
       var t = this, o = this.visibleItems[this.focusedItemInfo.index], r = this.activeItemPath.find(function(a) {
         return a.key === o.parentKey;
-      }), i = S(o.parent);
+      }), i = A(o.parent);
       i || (this.focusedItemInfo = {
         index: -1,
         parentKey: r ? r.parentKey : ""
@@ -782,7 +715,7 @@ var R = {
       this.hide();
     },
     onEnter: function(e) {
-      ee(e, {
+      X(e, {
         position: "absolute"
       }), this.position(), this.autoZIndex && P.set("menu", e, this.baseZIndex + this.$primevue.config.zIndex.menu);
     },
@@ -796,7 +729,7 @@ var R = {
       this.autoZIndex && P.clear(e), this.unbindOutsideClickListener(), this.unbindResizeListener();
     },
     position: function() {
-      var e = this.pageX + 1, t = this.pageY + 1, o = this.container.offsetParent ? this.container.offsetWidth : te(this.container), r = this.container.offsetParent ? this.container.offsetHeight : ne(this.container), i = ie();
+      var e = this.pageX + 1, t = this.pageY + 1, o = this.container.offsetParent ? this.container.offsetWidth : Y(this.container), r = this.container.offsetParent ? this.container.offsetHeight : j(this.container), i = q();
       e + o - document.body.scrollLeft > i.width && (e -= o), t + r - document.body.scrollTop > i.height && (t -= r), e < document.body.scrollLeft && (e = document.body.scrollLeft), t < document.body.scrollTop && (t = document.body.scrollTop), this.container.style.left = e + "px", this.container.style.top = t + "px";
     },
     bindOutsideClickListener: function() {
@@ -812,7 +745,7 @@ var R = {
     bindResizeListener: function() {
       var e = this;
       this.resizeListener || (this.resizeListener = function() {
-        e.visible && !oe() && e.hide();
+        e.visible && !J() && e.hide();
       }, window.addEventListener("resize", this.resizeListener));
     },
     unbindResizeListener: function() {
@@ -850,7 +783,7 @@ var R = {
     },
     findLastItemIndex: function() {
       var e = this;
-      return F(this.visibleItems, function(t) {
+      return S(this.visibleItems, function(t) {
         return e.isValidItem(t);
       });
     },
@@ -861,7 +794,7 @@ var R = {
       return o > -1 ? o + e + 1 : e;
     },
     findPrevItemIndex: function(e) {
-      var t = this, o = e > 0 ? F(this.visibleItems.slice(0, e), function(r) {
+      var t = this, o = e > 0 ? S(this.visibleItems.slice(0, e), function(r) {
         return t.isValidItem(r);
       }) : -1;
       return o > -1 ? o : e;
@@ -906,10 +839,10 @@ var R = {
     },
     createProcessedItems: function(e) {
       var t = this, o = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 0, r = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {}, i = arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : "", a = [];
-      return e && e.forEach(function(u, c) {
-        var s = (i !== "" ? i + "_" : "") + c, l = {
+      return e && e.forEach(function(u, d) {
+        var s = (i !== "" ? i + "_" : "") + d, l = {
           item: u,
-          index: c,
+          index: d,
           level: o,
           key: s,
           parent: r,
@@ -940,29 +873,29 @@ var R = {
     }
   },
   components: {
-    ContextMenuSub: O,
-    Portal: z
+    ContextMenuSub: T,
+    Portal: $
   }
 };
-function ye(n, e, t, o, r, i) {
+function he(n, e, t, o, r, i) {
   var a = g("ContextMenuSub"), u = g("Portal");
-  return m(), I(u, {
+  return c(), I(u, {
     appendTo: n.appendTo
   }, {
-    default: w(function() {
-      return [E(D, d({
+    default: C(function() {
+      return [M(F, m({
         name: "p-contextmenu",
         onEnter: i.onEnter,
         onAfterEnter: i.onAfterEnter,
         onLeave: i.onLeave,
         onAfterLeave: i.onAfterLeave
       }, n.ptm("transition")), {
-        default: w(function() {
-          return [r.visible ? (m(), h("div", d({
+        default: C(function() {
+          return [r.visible ? (c(), h("div", m({
             key: 0,
             ref: i.containerRef,
             class: n.cx("root")
-          }, n.ptmi("root")), [E(a, {
+          }, n.ptmi("root")), [M(a, {
             ref: i.listRef,
             id: r.id + "_list",
             class: K(n.cx("rootList")),
@@ -996,27 +929,17 @@ function ye(n, e, t, o, r, i) {
     _: 1
   }, 8, ["appendTo"]);
 }
-R.render = ye;
-function B({ text: n, icon: e, visible: t, click: o, items: r, iconCls: i }) {
-  return e && (e = e.name), {
-    icon: e,
-    iconCls: i,
-    visible: t,
-    label: n,
-    command: o,
-    items: r == null ? void 0 : r.map((a) => B(a))
-  };
-}
-const Le = /* @__PURE__ */ H({
+_.render = he;
+const ye = /* @__PURE__ */ G({
   __name: "BaseContextMenu",
   props: {
     items: {}
   },
   setup(n, { expose: e }) {
-    const t = n, o = W(), r = X(() => t.items.map((u) => B(u)));
+    const t = n, o = N(), r = H(() => t.items.map((u) => ne(u)));
     function i(u) {
-      var c;
-      (c = o.value) == null || c.show(u);
+      var d;
+      (d = o.value) == null || d.show(u);
     }
     function a() {
       var u;
@@ -1025,16 +948,13 @@ const Le = /* @__PURE__ */ H({
     return e({
       show: i,
       hide: a
-    }), (u, c) => (m(), I(Y(R), {
+    }), (u, d) => (c(), I(U(_), {
       ref_key: "rootCmp",
       ref: o,
       model: r.value
     }, null, 8, ["model"]));
   }
-}), Ce = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: Le
-}, Symbol.toStringTag, { value: "Module" }));
+});
 export {
-  Ce as default
+  ye as BaseContextMenu
 };
