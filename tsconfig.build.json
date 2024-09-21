@@ -1,6 +1,5 @@
 {
     "compilerOptions": {
-        "composite": true,
         "allowSyntheticDefaultImports": true,
         "target": "ES2022",
         "useDefineForClassFields": true,
@@ -17,7 +16,7 @@
         ],
         "skipLibCheck": true,
         /* Bundler mode */
-        "moduleResolution": "Bundler",
+        "moduleResolution": "Node",
         "resolveJsonModule": true,
         "isolatedModules": true,
         "jsx": "preserve",
@@ -32,8 +31,10 @@
         }
     },
     "include": [
+        "src/components/BaseButton.ts",
         "src/components/BaseButton.vue",
         "src/components/BaseContextMenu.vue",
+        "src/components/BaseContextMenu.ts",
         "src/types/components.ts",
         "src/utils/menu.ts"
     ],
