@@ -28,8 +28,8 @@ export default defineConfig({
 		outDir: "dist",
 		lib: {
 			entry: {
-				"components/BaseButton.vue": "src/components/BaseButton.ts",
-				"components/BaseContextMenu.vue": "src/components/BaseContextMenu.ts",
+				"components/BaseButton": "src/components/BaseButton.ts",
+				"components/BaseContextMenu": "src/components/BaseContextMenu.ts",
 			},
 			formats: ["es"],
 		},
