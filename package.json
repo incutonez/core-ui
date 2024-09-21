@@ -83,9 +83,6 @@
       "@semantic-release/github"
     ]
   },
-  "exports": {
-    "./components/*": "./src/components/*"
-  },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   }
