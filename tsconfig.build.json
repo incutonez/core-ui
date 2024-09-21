@@ -17,8 +17,7 @@
         ],
         "skipLibCheck": true,
         /* Bundler mode */
-        "moduleResolution": "Node",
-        "allowImportingTsExtensions": true,
+        "moduleResolution": "Bundler",
         "resolveJsonModule": true,
         "isolatedModules": true,
         "jsx": "preserve",
@@ -38,5 +37,5 @@
         "src/**/*.tsx",
         "src/**/*.vue",
     ],
-    "exclude": ["node_modules", "src/App.vue", "src/main.ts", "src/router.ts", "src/assets.ts", "src/components.ts", "src/types.ts", "src/utils.ts", "src/assets/theme", "src/vite-env.d.ts"],
+    "exclude": ["node_modules", "src/App.vue", "src/main.ts", "src/router.ts", "src/assets/theme", "src/indices"],
 }

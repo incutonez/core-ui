@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "dev": "vite --config vite/config.dev.ts",
-    "build": "npx tsx makeIndex.ts && vite build --config vite/config.prod.ts",
+    "build": "vite build --config vite/config.prod.ts",
     "prepare": "husky"
   },
   "dependencies": {
@@ -62,8 +62,7 @@
   },
   "lint-staged": {
     "src/*.{js,mjs,cjs,jsx,ts,tsx,vue}": [
-      "npx eslint --fix",
-      "npx vue-tsc --noEmit"
+      "npx eslint --fix"
     ]
   },
   "release": {

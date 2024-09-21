@@ -8,8 +8,8 @@ import svgLoader from "vite-svg-loader";
 export default defineConfig({
 	base: "/core-ui/",
 	plugins: [vue(), svgLoader(), dts({
-		copyDtsFiles: true,
-		tsconfigPath: "./tsconfig.build.json",
+		rollupTypes: true,
+		tsconfigPath: "tsconfig.build.json",
 	})],
 	resolve: {
 		alias: [{
@@ -28,17 +28,13 @@ export default defineConfig({
 		emptyOutDir: true,
 		outDir: "dist",
 		lib: {
-			entry: Object.fromEntries(glob.sync("./src/indices/**/*.ts").map((file) => {
-				return [file.replace("src\\indices\\", "").replace(/\.ts$/, "").replace(/\\/g, "/"), file];
-			})),
+			entry: {
+				index: "src/index.ts",
+			},
 			formats: ["es"],
 		},
 		rollupOptions: {
 			external: ["vue"],
-			output: {
-				dir: "dist",
-				format: "es",
-			},
 		},
 	},
 });
