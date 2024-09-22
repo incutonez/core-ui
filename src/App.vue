@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import BaseButton from "@/components/BaseButton.vue";
 </script>
 
 <template>
 	<article class="text-red-400">
-		Hello!
+		<BaseButton text="My Button" />
 	</article>
 </template>
