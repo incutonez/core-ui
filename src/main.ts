@@ -1,14 +1,10 @@
 import "@/style.css";
 import { createApp } from "vue";
-import PrimeVue from "primevue/config";
 import App from "@/App.vue";
-import { TailwindTheme } from "@/assets/theme";
 import { router } from "@/router";
+import theme from "@/theme.ts";
 
 const app = createApp(App);
-app.use(PrimeVue, {
-	unstyled: true,
-	pt: TailwindTheme,
-});
+app.use(theme);
 app.use(router);
 app.mount("#app");

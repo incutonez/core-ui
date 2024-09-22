@@ -5,7 +5,9 @@ import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 import svgLoader from "vite-svg-loader";
 
-const entries: Record<string, string> = {};
+const entries: Record<string, string> = {
+	theme: "src/theme.ts",
+};
 glob.sync("src/components/**/*.ts").forEach((file) => {
 	entries[file.replace(/\\/g, "/").replace("src/", "").replace(".ts", "")] = file;
 });
@@ -41,7 +43,13 @@ export default defineConfig({
 		emptyOutDir: true,
 		outDir: "dist",
 		lib: {
-			entry: entries,
+			entry: {
+				theme: "src/theme.ts",
+				components: "src/components.ts",
+				types: "src/types.ts",
+				utils: "src/utils.ts",
+				icons: "src/icons.ts",
+			},
 			formats: ["es"],
 		},
 		rollupOptions: {
