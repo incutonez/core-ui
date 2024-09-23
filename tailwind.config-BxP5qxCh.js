@@ -1,31 +1,31 @@
 function m(a) {
   return a && a.__esModule && Object.prototype.hasOwnProperty.call(a, "default") ? a.default : a;
 }
-var h = {}, y = {}, g = { exports: {} }, e = String, p = function() {
+var h = {}, y = {}, g = { exports: {} }, e = String, _ = function() {
   return { isColorSupported: !1, reset: e, bold: e, dim: e, italic: e, underline: e, inverse: e, hidden: e, strikethrough: e, black: e, red: e, green: e, yellow: e, blue: e, magenta: e, cyan: e, white: e, gray: e, bgBlack: e, bgRed: e, bgGreen: e, bgYellow: e, bgBlue: e, bgMagenta: e, bgCyan: e, bgWhite: e, blackBright: e, redBright: e, greenBright: e, yellowBright: e, blueBright: e, magentaBright: e, cyanBright: e, whiteBright: e, bgBlackBright: e, bgRedBright: e, bgGreenBright: e, bgYellowBright: e, bgBlueBright: e, bgMagentaBright: e, bgCyanBright: e, bgWhiteBright: e };
 };
-g.exports = p();
-g.exports.createColors = p;
-var w = g.exports;
+g.exports = _();
+g.exports.createColors = _;
+var v = g.exports;
 (function(a) {
   Object.defineProperty(a, "__esModule", {
     value: !0
   });
-  function i(f, t) {
+  function l(f, t) {
     for (var c in t) Object.defineProperty(f, c, {
       enumerable: !0,
       get: t[c]
     });
   }
-  i(a, {
+  l(a, {
     dim: function() {
-      return l;
+      return i;
     },
     default: function() {
-      return b;
+      return u;
     }
   });
-  const d = /* @__PURE__ */ n(w);
+  const d = /* @__PURE__ */ n(v);
   function n(f) {
     return f && f.__esModule ? f : {
       default: f
@@ -33,12 +33,12 @@ var w = g.exports;
   }
   let o = /* @__PURE__ */ new Set();
   function r(f, t, c) {
-    typeof process < "u" && process.env.JEST_WORKER_ID || c && o.has(c) || (c && o.add(c), console.warn(""), t.forEach((_) => console.warn(f, "-", _)));
+    typeof process < "u" && process.env.JEST_WORKER_ID || c && o.has(c) || (c && o.add(c), console.warn(""), t.forEach((p) => console.warn(f, "-", p)));
   }
-  function l(f) {
+  function i(f) {
     return d.default.dim(f);
   }
-  const b = {
+  const u = {
     info(f, t) {
       r(d.default.bold(d.default.cyan("info")), ...Array.isArray(f) ? [
         f
@@ -74,15 +74,15 @@ var w = g.exports;
       return o;
     }
   });
-  const i = /* @__PURE__ */ d(y);
+  const l = /* @__PURE__ */ d(y);
   function d(r) {
     return r && r.__esModule ? r : {
       default: r
     };
   }
-  function n({ version: r, from: l, to: b }) {
-    i.default.warn(`${l}-color-renamed`, [
-      `As of Tailwind CSS ${r}, \`${l}\` has been renamed to \`${b}\`.`,
+  function n({ version: r, from: i, to: u }) {
+    l.default.warn(`${i}-color-renamed`, [
+      `As of Tailwind CSS ${r}, \`${i}\` has been renamed to \`${u}\`.`,
       "Update your configuration file to silence this warning."
     ]);
   }
@@ -415,10 +415,10 @@ var w = g.exports;
     }
   };
 })(h);
-let u = h;
-var v = (u.__esModule ? u : { default: u }).default;
-const s = /* @__PURE__ */ m(v), B = {
-  content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+let b = h;
+var w = (b.__esModule ? b : { default: b }).default;
+const s = /* @__PURE__ */ m(w), B = {
+  content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}", "node_modules/@incutonez/core-ui/dist/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
       sans: ["Open Sans"]
@@ -441,7 +441,11 @@ const s = /* @__PURE__ */ m(v), B = {
     }
   },
   plugins: []
-};
+}, S = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: B
+}, Symbol.toStringTag, { value: "Module" }));
 export {
-  B as default
+  B as a,
+  S as t
 };
