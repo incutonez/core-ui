@@ -21,7 +21,7 @@ const Dirs = [{
 	name: "utils",
 }];
 const SrcRe = /^src/;
-const mainIndex: string[] = [];
+const mainIndex: string[] = ["export * as tailwindConfig from \"@/tailwind.config\";", "export * as theme from \"@/theme\";"];
 for (const { dir, match, name } of Dirs) {
 	const output: string[] = [];
 	if (existsSync(`${dir}/index.ts`)) {
