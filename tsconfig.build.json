@@ -31,16 +31,14 @@
         }
     },
     "include": [
-        "src/components.ts",
-        "src/utils.ts",
-        "src/types.ts",
-        "src/icons.ts",
-        "src/theme.ts",
         "src/components/*",
         "src/utils/*",
         "src/types/*",
         "src/assets/**/*.vue",
-        "src/vite-env.d.ts"
+        "src/vite-env.d.ts",
+        "src/theme.ts",
+        "src/tailwind.config.ts",
+        "src/index.ts"
     ],
     "exclude": ["node_modules", "src/App.vue", "src/main.ts", "src/router.ts", "src/assets/theme"]
 }

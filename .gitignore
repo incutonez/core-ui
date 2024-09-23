@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+src/assets/index.ts
+src/components/index.ts
+src/utils/index.ts
+src/types/index.ts
+src/index.ts
