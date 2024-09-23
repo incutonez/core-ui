@@ -1,5 +1,6 @@
 import { writeFileSync } from "fs";
 import { glob } from "glob";
+import { rmSync } from "node:fs";
 import path from "path";
 
 const Dirs = [{
@@ -9,7 +10,7 @@ const Dirs = [{
 }, {
 	dir: "./src/assets/",
 	match: "**/*.vue",
-	name: "icons",
+	name: "assets",
 }, {
 	dir: "./src/types/",
 	match: "**/*",
@@ -20,8 +21,10 @@ const Dirs = [{
 	name: "utils",
 }];
 const SrcRe = /^src/;
+const mainIndex: string[] = [];
 for (const { dir, match, name } of Dirs) {
 	const output: string[] = [];
+	rmSync(`${dir}/index.ts`);
 	const files = glob.sync(`${dir}${match}`);
 	for (const file of files) {
 		const extension = path.extname(file);
@@ -33,5 +36,7 @@ for (const { dir, match, name } of Dirs) {
 			output.push(`export { default as ${componentName} } from "${file.replace(SrcRe, "@").replace(/\\/g, "/")}";`);
 		}
 	}
-	writeFileSync(`src/${name}.ts`, output.join("\n"));
+	writeFileSync(`${dir}/index.ts`, output.join("\n"));
+	mainIndex.push(`export * as ${name} from "@/${name}/index";`);
 }
+writeFileSync("src/index.ts", mainIndex.join("\n"));

@@ -44,11 +44,13 @@ export default defineConfig({
 		outDir: "dist",
 		lib: {
 			entry: {
+				"components/index": "src/components/index.ts",
+				"types/index": "src/types/index.ts",
+				"utils/index": "src/utils/index.ts",
+				"assets/index": "src/assets/index.ts",
+				tailwind: "src/tailwind.config.ts",
 				theme: "src/theme.ts",
-				components: "src/components.ts",
-				types: "src/types.ts",
-				utils: "src/utils.ts",
-				icons: "src/icons.ts",
+				index: "src/index.ts",
 			},
 			formats: ["es"],
 		},
