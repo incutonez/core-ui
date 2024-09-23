@@ -1,6 +1,6 @@
 import { writeFileSync } from "fs";
 import { glob } from "glob";
-import { rmSync } from "node:fs";
+import { existsSync, rmSync } from "node:fs";
 import path from "path";
 
 const Dirs = [{
@@ -24,7 +24,9 @@ const SrcRe = /^src/;
 const mainIndex: string[] = [];
 for (const { dir, match, name } of Dirs) {
 	const output: string[] = [];
-	rmSync(`${dir}/index.ts`);
+	if (existsSync(`${dir}/index.ts`)) {
+		rmSync(`${dir}/index.ts`);
+	}
 	const files = glob.sync(`${dir}${match}`);
 	for (const file of files) {
 		const extension = path.extname(file);
