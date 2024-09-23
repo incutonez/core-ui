@@ -1,3 +1,4 @@
+import "./style.css";
 import { App } from "vue";
 import PrimeVue from "primevue/config";
 import { TailwindTheme } from "@/assets/theme";

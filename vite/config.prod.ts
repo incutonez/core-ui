@@ -2,6 +2,7 @@ import vue from "@vitejs/plugin-vue";
 import { glob } from "glob";
 import path from "path";
 import { defineConfig } from "vite";
+import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 import dts from "vite-plugin-dts";
 import svgLoader from "vite-svg-loader";
 
@@ -25,7 +26,7 @@ export default defineConfig({
 	base: "/core-ui/",
 	plugins: [vue(), svgLoader(), dts({
 		tsconfigPath: "tsconfig.build.json",
-	})],
+	}), cssInjectedByJsPlugin()],
 	resolve: {
 		alias: [{
 			find: "@",
@@ -48,7 +49,7 @@ export default defineConfig({
 				"types/index": "src/types/index.ts",
 				"utils/index": "src/utils/index.ts",
 				"assets/index": "src/assets/index.ts",
-				tailwind: "src/tailwind.config.ts",
+				"tailwind.config": "src/tailwind.config.ts",
 				theme: "src/theme.ts",
 				index: "src/index.ts",
 			},
