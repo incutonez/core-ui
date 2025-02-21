@@ -34,11 +34,14 @@ jobs:
         run: npx semantic-release --deps.bump=inherit
       - name: Build UI
         run: npm run build
-      - run: npm publish
+      - name: Publish Package
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Build GH Pages
+        run: npm run gh-pages
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: dist
+          folder: dist-gh
