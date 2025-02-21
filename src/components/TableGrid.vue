@@ -208,7 +208,7 @@ function onSearch() {
 	}
 }
 
-function onChangePage(value: number) {
+function onChangePage(value?: number) {
 	changePage(value);
 }
 

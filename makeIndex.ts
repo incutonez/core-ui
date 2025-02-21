@@ -1,3 +1,8 @@
+/**
+ * This script is intended to generate all the index.ts files we need for exporting the library.  Because we don't have
+ * a single entry point, we need to have multiple entry points, and I wanted to automate this with a script.
+ * Source: https://www.reddit.com/r/vuejs/comments/1fls4pn/comment/loae1z3/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+ */
 import { writeFileSync } from "fs";
 import { glob } from "glob";
 import { existsSync, rmSync } from "node:fs";
@@ -21,7 +26,7 @@ const Dirs = [{
 	name: "utils",
 }];
 const SrcRe = /^src/;
-const mainIndex: string[] = ["export * as tailwindConfig from \"@/tailwind.config\";", "export * as theme from \"@/theme\";"];
+const mainIndex: string[] = ["export * as theme from \"@/theme\";"];
 for (const { dir, match, name } of Dirs) {
 	const output: string[] = [];
 	if (existsSync(`${dir}/index.ts`)) {

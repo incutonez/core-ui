@@ -168,7 +168,7 @@ export function useDataTable<TData = unknown>(props: ITableGrid, emit: TTableEmi
 		loadRecords();
 	}
 
-	function changePage(value: number) {
+	function changePage(value?: number) {
 		if (!value) {
 			value = 1;
 		}
