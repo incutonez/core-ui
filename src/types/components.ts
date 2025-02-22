@@ -47,3 +47,7 @@ export interface IMenuItem {
 	click?: () => void;
 	items?: IMenuItem[];
 }
+
+export interface ITableCellActions {
+	actions: IBaseButton[];
+}

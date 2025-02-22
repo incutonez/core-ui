@@ -88,5 +88,22 @@
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/components/index.js"
+    },
+    "./assets": {
+      "import": "./dist/assets/index.js"
+    },
+    "./types": {
+      "import": "./dist/types/index.js"
+    },
+    "./utils": {
+      "import": "./dist/utils/index.js"
+    },
+    "./theme": {
+      "import": "./dist/theme.js"
+    }
   }
 }

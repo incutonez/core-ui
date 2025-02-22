@@ -1,16 +1,22 @@
+import tailwindcss from "@tailwindcss/vite";
 import vue from "@vitejs/plugin-vue";
 import path from "path";
 import { defineConfig } from "vite";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 import dts from "vite-plugin-dts";
 import svgLoader from "vite-svg-loader";
-import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
 	base: "/core-ui/",
-	plugins: [vue(), svgLoader(), tailwindcss(), dts({
-		tsconfigPath: "tsconfig.build.json",
-	}), cssInjectedByJsPlugin()],
+	plugins: [
+		vue(),
+		svgLoader(),
+		tailwindcss(),
+		dts({
+			tsconfigPath: "tsconfig.build.json",
+		}),
+		cssInjectedByJsPlugin(),
+	],
 	resolve: {
 		alias: [{
 			find: "@",

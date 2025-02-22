@@ -12,11 +12,7 @@
 
 <script setup lang="ts">
 import BaseButton from "@/components/BaseButton.vue";
-import { IBaseButton } from "@/types/components";
-
-export interface ITableCellActions {
-	actions: IBaseButton[];
-}
+import { ITableCellActions } from "@/types/components";
 
 defineProps<ITableCellActions>();
 </script>
