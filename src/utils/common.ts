@@ -2,7 +2,7 @@ import get from "just-safe-get";
 import { capitalize, isFunction as lodashIsFunction, isObject as lodashIsObject } from "lodash-es";
 import MimeTypes from "mime-types";
 import pluralize from "pluralize";
-import { IBaseField } from "@/types";
+import { IBaseField } from "@/types/components";
 
 export { default as clone } from "just-clone";
 
