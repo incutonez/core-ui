@@ -17,6 +17,8 @@
 				Table Grid
 			</RouterLink>
 		</section>
-		<RouterView class="flex-1" />
+		<section class="flex-1 overflow-hidden">
+			<RouterView />
+		</section>
 	</article>
 </template>

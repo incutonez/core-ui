@@ -124,3 +124,10 @@ export function downloadFile(blob: Blob, name = "download", extension = MimeType
 	a.click();
 	window.URL.revokeObjectURL(url);
 }
+
+export interface ITableLoad {
+	page: number;
+	filters: unknown[];
+	start: number;
+	limit: number;
+}

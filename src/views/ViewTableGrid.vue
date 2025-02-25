@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import { faker } from "@faker-js/faker";
 import { IconCopy, IconDelete, IconEdit, IconImport } from "@/assets";
 import { BaseButton, TableCellActions, TableGrid } from "@/components";
 import { ITableCellActions, ITableColumn } from "@/types";
+import { ITableLoad } from "@/utils";
 
 export interface IUser {
 	id: string;
@@ -13,28 +15,7 @@ export interface IUser {
 	gender: string;
 }
 
-const records = [{
-	id: 1,
-	firstName: "Karel",
-	lastName: "Hounsom",
-	email: "khounsom0@sun.com",
-	gender: "Male",
-	ipAddress: "30.28.250.196",
-}, {
-	id: 2,
-	firstName: "Edgar",
-	lastName: "Scrivener",
-	email: "escrivener1@hud.gov",
-	gender: "Male",
-	ipAddress: "223.254.37.231",
-}, {
-	id: 3,
-	firstName: "Dukie",
-	lastName: "Brooksby",
-	email: "dbrooksby2@ucoz.ru",
-	gender: "Male",
-	ipAddress: "223.67.182.170",
-}];
+const LocalUsers: IUser[] = [];
 
 const columns: ITableColumn<IUser>[] = [{
 	lock: "left",
@@ -48,7 +29,7 @@ const columns: ITableColumn<IUser>[] = [{
 	titleAlign: "center",
 	showMenu: false,
 	cellComponent: TableCellActions,
-	cellParams(record: IUser) {
+	cellParams(record: IUser): ITableCellActions {
 		return {
 			actions: [{
 				title: "Edit",
@@ -69,7 +50,7 @@ const columns: ITableColumn<IUser>[] = [{
 					alert(`Delete User ${record.firstName} ${record.lastName}`);
 				},
 			}],
-		} as ITableCellActions;
+		};
 	},
 }, {
 	field: "firstName",
@@ -102,6 +83,24 @@ const columns: ITableColumn<IUser>[] = [{
 	},
 }];
 
+async function loadUsers(request: ITableLoad) {
+	for (let i = request.start; i < request.limit + request.start; i++) {
+		LocalUsers[i] ??= {
+			id: faker.string.uuid(),
+			firstName: faker.person.firstName(),
+			lastName: faker.person.lastName(),
+			email: faker.internet.email(),
+			phone: faker.phone.number(),
+			birthDate: faker.date.birthdate().getTime(),
+			gender: faker.person.gender(),
+		};
+	}
+	return {
+		total: LocalUsers.length < 500 ? 500 : LocalUsers.length,
+		data: LocalUsers.slice(request.start, request.start + request.limit),
+	};
+}
+
 function onClickImportUsers() {
 
 }
@@ -109,11 +108,12 @@ function onClickImportUsers() {
 
 <template>
 	<TableGrid
-		ref="usersGrid"
-		:columns="columns"
-		:records="records"
-		:show-add-entity="false"
 		title="Users"
+		:columns="columns"
+		:load="loadUsers"
+		:show-add-entity="false"
+		remote
+		:remote-max="15"
 	>
 		<template #headerEnd>
 			<BaseButton

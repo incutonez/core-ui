@@ -110,6 +110,7 @@ defineExpose({
 		:first="start"
 		:loading="loading"
 		:rows="rowsPerPage"
+		:paginator="showPagination"
 		class="w-full"
 		@column-reorder="onReorder"
 	>
@@ -179,52 +180,47 @@ defineExpose({
 				</section>
 			</section>
 		</template>
-		<template #footer>
-			<article
-				v-if="showPagination"
-				class="flex items-center justify-between"
-			>
-				<FieldComboBox
-					v-if="showRowsPerPage"
-					:model-value="rowsPerPage"
-					dropdown-cls="w-16"
-					label-cls="text-sm"
-					label="Rows"
-					:options="RowsPerPageOptions"
-					@update:model-value="onChangeRows"
+		<template #paginatorcontainer>
+			<FieldComboBox
+				v-if="showRowsPerPage"
+				:model-value="rowsPerPage"
+				dropdown-cls="w-16"
+				label-cls="text-sm"
+				label="Rows"
+				:options="RowsPerPageOptions"
+				@update:model-value="onChangeRows"
+			/>
+			<section class="flex items-center gap-x-2">
+				<BaseButton
+					title="Previous"
+					:disabled="isPageFirst"
+					plain
+					class="!p-0"
+					:icon="IconPageLeft"
+					icon-cls="h-8 w-8"
+					@click="onPagePrevious"
 				/>
-				<section class="flex items-center gap-x-2">
-					<BaseButton
-						title="Previous"
-						:disabled="isPageFirst"
-						plain
-						class="!p-0"
-						:icon="IconPageLeft"
-						icon-cls="h-8 w-8"
-						@click="onPagePrevious"
-					/>
-					<FieldNumber
-						label="Page"
-						input-width="w-10"
-						input-cls="text-center !px-2 !py-1"
-						label-cls="text-sm"
-						:min="1"
-						:model-value="currentPage"
-						@update:model-value="onChangePage"
-					/>
-					<span class="text-sm">of {{ totalPages }}</span>
-					<BaseButton
-						title="Next"
-						:disabled="isPageLast"
-						plain
-						class="!p-0"
-						:icon="IconPageRight"
-						icon-cls="h-8 w-8"
-						@click="onPageNext"
-					/>
-				</section>
-				<span class="text-sm">{{ startDisplay }} - {{ endDisplay }} of {{ recordsTotal }}</span>
-			</article>
+				<FieldNumber
+					label="Page"
+					input-width="w-10"
+					input-cls="text-center !px-2 !py-1"
+					label-cls="text-sm"
+					:min="1"
+					:model-value="currentPage"
+					@update:model-value="onChangePage"
+				/>
+				<span class="text-sm">of {{ totalPages }}</span>
+				<BaseButton
+					title="Next"
+					:disabled="isPageLast"
+					plain
+					class="!p-0"
+					:icon="IconPageRight"
+					icon-cls="h-8 w-8"
+					@click="onPageNext"
+				/>
+			</section>
+			<span class="text-sm">{{ startDisplay }} - {{ endDisplay }} of {{ recordsTotal }}</span>
 		</template>
 	</DataTable>
 </template>
