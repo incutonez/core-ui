@@ -112,6 +112,7 @@ function onClickImportUsers() {
 		ref="usersGrid"
 		:columns="columns"
 		:records="records"
+		:show-add-entity="false"
 		title="Users"
 	>
 		<template #headerEnd>

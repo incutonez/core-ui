@@ -36,6 +36,7 @@ const props = withDefaults(defineProps<ITableGrid>(), {
 	showPagination: true,
 });
 const emit = defineEmits<ITableEmit>();
+const selectedRow = defineModel<unknown>("selectedRow");
 const { filterFields, columnsConfig, propsComponent, recordsTotal, start, loading, rowsPerPage, currentPage, recordsCached, filters, search, isPageLast, isPageFirst, startDisplay, endDisplay, totalPages, loadRecords, previousPage, nextPage, changePage, changeRowsPerPage, getColumnMenuConfig, getCellDisplay, getCellParams } = useDataTable(props, emit);
 
 function onPagePrevious() {
@@ -103,6 +104,7 @@ defineExpose({
 	<DataTable
 		v-bind="propsComponent"
 		v-model:filters="filters"
+		v-model:selection="selectedRow"
 		:global-filter-fields="filterFields"
 		:value="loading ? [] : recordsCached"
 		:first="start"
@@ -148,9 +150,12 @@ defineExpose({
 		<template #header>
 			<section
 				v-if="showHeader"
-				class="flex"
+				class="flex items-center"
 			>
-				<h2 v-if="title">
+				<h2
+					v-if="title"
+					class="font-semibold"
+				>
 					{{ title }}
 				</h2>
 				<section class="ml-auto flex gap-x-2">
@@ -182,7 +187,7 @@ defineExpose({
 				<FieldComboBox
 					v-if="showRowsPerPage"
 					:model-value="rowsPerPage"
-					class="w-26"
+					dropdown-cls="w-16"
 					label-cls="text-sm"
 					label="Rows"
 					:options="RowsPerPageOptions"
