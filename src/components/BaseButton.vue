@@ -10,7 +10,6 @@
 			<slot name="icon">
 				<Component
 					:is="icon"
-					class="mr-0.5 size-4"
 					:class="iconCls"
 				/>
 			</slot>

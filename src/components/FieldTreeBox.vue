@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import PrimeTreeSelect from "primevue/treeselect";
-import BaseField, { IBaseField } from "@/components/BaseField.vue";
-import { ITreeOption } from "@/types/components";
+import BaseField from "@/components/BaseField.vue";
+import { IBaseField, ITreeOption } from "@/types/components";
 
 export type IFieldTreeBoxSelection = Record<string, boolean>;
 

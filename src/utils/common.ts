@@ -1,9 +1,16 @@
 import get from "just-safe-get";
-import { isFunction as lodashIsFunction, isObject as lodashIsObject } from "lodash-es";
-import { extension } from "mime-types";
+import { capitalize, isFunction as lodashIsFunction, isObject as lodashIsObject } from "lodash-es";
+import MimeTypes from "mime-types";
+import pluralize from "pluralize";
+import { IBaseField } from "@/types";
 
 export { default as clone } from "just-clone";
 
+export { snakeCase, camelCase } from "lodash-es";
+
+export const capitalCase = capitalize;
+
+const SplitCapitalizeRe = /[a-z]+|[A-Z]+[a-z]*/g;
 // TODO: Get i18n string from somewhere
 const DateLong = Intl.DateTimeFormat("en-us", {
 	month: "2-digit",
@@ -13,6 +20,27 @@ const DateLong = Intl.DateTimeFormat("en-us", {
 	minute: "2-digit",
 	second: "2-digit",
 });
+
+export function extractBaseFieldProps<T extends IBaseField>({ label, labelCls, labelPosition }: T) {
+	return {
+		label,
+		labelCls,
+		labelPosition,
+	};
+}
+
+export function makeNoun(word: string, count = 1, includeCount = true) {
+	word = count === 1 ? makeSingular(word) : makePlural(word);
+	return includeCount ? `${count} ${word}` : word;
+}
+
+export function makePlural(word: string) {
+	return pluralize.plural(word);
+}
+
+export function makeSingular(word: string) {
+	return pluralize.singular(word);
+}
 
 export function isString(value: unknown): value is string {
 	return typeof value === "string";
@@ -28,10 +56,10 @@ export function makeArray(value: unknown) {
 
 export function isEmpty(value: unknown) {
 	return value === undefined ||
-        value === null ||
-        value === "" ||
-        Array.isArray(value) && value.length === 0 ||
-        isObject(value) && !Object.keys(value).length;
+		value === null ||
+		value === "" ||
+		Array.isArray(value) && value.length === 0 ||
+		isObject(value) && !Object.keys(value).length;
 }
 
 export function isFunction(value: unknown): value is (...args: unknown[]) => unknown {
@@ -40,6 +68,13 @@ export function isFunction(value: unknown): value is (...args: unknown[]) => unk
 
 export function isObject(value?: unknown): value is object {
 	return lodashIsObject(value);
+}
+
+export function splitCapitalize(word: string) {
+	const matches = word.match(SplitCapitalizeRe);
+	if (matches?.length) {
+		return matches.reduce((output, item) => output + capitalize(item), "");
+	}
 }
 
 export function pluck<T = unknown>(items: object[], keys: string | string[]) {
@@ -75,9 +110,8 @@ export function dateLongFormat(value: string | number | Date) {
 	return DateLong.format(value);
 }
 
-export function downloadFile(blob: Blob, name = "download") {
-	const fileExt = extension(blob.type);
-	if (!fileExt) {
+export function downloadFile(blob: Blob, name = "download", extension = MimeTypes.extension(blob.type)) {
+	if (!extension) {
 		return;
 	}
 	const url = window.URL.createObjectURL(blob);
@@ -85,7 +119,7 @@ export function downloadFile(blob: Blob, name = "download") {
 	a.style.display = "none";
 	a.href = url;
 	// the filename you want
-	a.download = `${name}.${fileExt}`;
+	a.download = `${name}.${extension}`;
 	document.body.appendChild(a);
 	a.click();
 	window.URL.revokeObjectURL(url);

@@ -1,128 +1,3 @@
-<template>
-	<DataTable
-		v-bind="propsComponent"
-		v-model:filters="filters"
-		:global-filter-fields="filterFields"
-		:value="loading ? [] : recordsCached"
-		:first="start"
-		:loading="loading"
-		:rows="rowsPerPage"
-		class="w-full"
-		@column-reorder="onReorder"
-	>
-		<Column
-			v-for="column in columnsConfig"
-			:key="column.id"
-			v-bind="column.props"
-		>
-			<template #sorticon="slotProps">
-				<template v-if="slotProps.sorted">
-					<IconSort
-						class="ml-1.5 size-4"
-						:class="slotProps.sortOrder === 1 ? 'rotate-180 -scale-x-100' : ''"
-					/>
-				</template>
-			</template>
-			<template #body="slotProps">
-				<Component
-					:is="column.cellComponent"
-					v-if="column.cellComponent"
-					v-bind="getCellParams(column, slotProps.data)"
-				/>
-				<span v-else>
-					{{ getCellDisplay(column, slotProps) }}
-				</span>
-			</template>
-			<template
-				v-if="column.showMenu ?? true"
-				#header
-			>
-				<TableCellMenu
-					:button-config="{ plain: true }"
-					:menu-config="getColumnMenuConfig(column)"
-					class="absolute right-1"
-				/>
-			</template>
-		</Column>
-		<template #header>
-			<section
-				v-if="showHeader"
-				class="flex"
-			>
-				<h2 v-if="title">
-					{{ title }}
-				</h2>
-				<section class="ml-auto flex gap-x-2">
-					<FieldText
-						v-if="showSearch"
-						v-model="search"
-						label="Search"
-						@input-clear="onSearch"
-						@input-end="onSearch"
-					/>
-					<slot
-						v-if="showAddEntity"
-						name="addEntity"
-					>
-						<BaseButton
-							v-bind="addEntityConfig"
-							:icon="IconAdd"
-						/>
-					</slot>
-					<slot name="headerEnd" />
-				</section>
-			</section>
-		</template>
-		<template #footer>
-			<article
-				v-if="showPagination"
-				class="flex items-center justify-between"
-			>
-				<FieldComboBox
-					v-if="showRowsPerPage"
-					:model-value="rowsPerPage"
-					class="w-auto"
-					label-cls="text-sm"
-					label="Rows"
-					:options="RowsPerPageOptions"
-					@update:model-value="onChangeRows"
-				/>
-				<section class="flex items-center gap-x-2">
-					<BaseButton
-						title="Previous"
-						:disabled="isPageFirst"
-						plain
-						class="!p-0"
-						:icon="IconPageLeft"
-						icon-cls="h-8 w-8"
-						@click="onPagePrevious"
-					/>
-					<FieldNumber
-						label="Page"
-						input-width="w-10"
-						input-cls="text-center !px-2 !py-1"
-						label-cls="text-sm"
-						:min="1"
-						:model-value="currentPage"
-						@update:model-value="onChangePage"
-					/>
-					<span class="text-sm">of {{ totalPages }}</span>
-					<BaseButton
-						title="Next"
-						:disabled="isPageLast"
-						plain
-						class="!p-0"
-						:icon="IconPageRight"
-						icon-cls="h-8 w-8"
-						@click="onPageNext"
-					/>
-				</section>
-				<span class="text-sm">{{ startDisplay }} - {{ endDisplay }} of {{ recordsTotal }}</span>
-			</article>
-		</template>
-	</DataTable>
-</template>
-
 <script setup lang="ts">
 /**
  * Base component used for data tables.
@@ -223,3 +98,128 @@ defineExpose({
 	reloadRecords,
 });
 </script>
+
+<template>
+	<DataTable
+		v-bind="propsComponent"
+		v-model:filters="filters"
+		:global-filter-fields="filterFields"
+		:value="loading ? [] : recordsCached"
+		:first="start"
+		:loading="loading"
+		:rows="rowsPerPage"
+		class="w-full"
+		@column-reorder="onReorder"
+	>
+		<Column
+			v-for="column in columnsConfig"
+			:key="column.id"
+			v-bind="column.props"
+		>
+			<template #sorticon="slotProps">
+				<template v-if="slotProps.sorted">
+					<IconSort
+						class="ml-1.5 size-4"
+						:class="slotProps.sortOrder === 1 ? 'rotate-180 -scale-x-100' : ''"
+					/>
+				</template>
+			</template>
+			<template #body="slotProps">
+				<Component
+					:is="column.cellComponent"
+					v-if="column.cellComponent"
+					v-bind="getCellParams(column, slotProps.data)"
+				/>
+				<span v-else>
+					{{ getCellDisplay(column, slotProps as any) }}
+				</span>
+			</template>
+			<template
+				v-if="column.showMenu ?? true"
+				#header
+			>
+				<TableCellMenu
+					:button-config="{ plain: true }"
+					:menu-config="getColumnMenuConfig(column)"
+					class="absolute right-1"
+				/>
+			</template>
+		</Column>
+		<template #header>
+			<section
+				v-if="showHeader"
+				class="flex"
+			>
+				<h2 v-if="title">
+					{{ title }}
+				</h2>
+				<section class="ml-auto flex gap-x-2">
+					<FieldText
+						v-if="showSearch"
+						v-model="search"
+						label="Search"
+						@input-clear="onSearch"
+						@input-end="onSearch"
+					/>
+					<slot
+						v-if="showAddEntity"
+						name="addEntity"
+					>
+						<BaseButton
+							v-bind="addEntityConfig"
+							:icon="IconAdd"
+						/>
+					</slot>
+					<slot name="headerEnd" />
+				</section>
+			</section>
+		</template>
+		<template #footer>
+			<article
+				v-if="showPagination"
+				class="flex items-center justify-between"
+			>
+				<FieldComboBox
+					v-if="showRowsPerPage"
+					:model-value="rowsPerPage"
+					class="w-26"
+					label-cls="text-sm"
+					label="Rows"
+					:options="RowsPerPageOptions"
+					@update:model-value="onChangeRows"
+				/>
+				<section class="flex items-center gap-x-2">
+					<BaseButton
+						title="Previous"
+						:disabled="isPageFirst"
+						plain
+						class="!p-0"
+						:icon="IconPageLeft"
+						icon-cls="h-8 w-8"
+						@click="onPagePrevious"
+					/>
+					<FieldNumber
+						label="Page"
+						input-width="w-10"
+						input-cls="text-center !px-2 !py-1"
+						label-cls="text-sm"
+						:min="1"
+						:model-value="currentPage"
+						@update:model-value="onChangePage"
+					/>
+					<span class="text-sm">of {{ totalPages }}</span>
+					<BaseButton
+						title="Next"
+						:disabled="isPageLast"
+						plain
+						class="!p-0"
+						:icon="IconPageRight"
+						icon-cls="h-8 w-8"
+						@click="onPageNext"
+					/>
+				</section>
+				<span class="text-sm">{{ startDisplay }} - {{ endDisplay }} of {{ recordsTotal }}</span>
+			</article>
+		</template>
+	</DataTable>
+</template>

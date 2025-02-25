@@ -8,13 +8,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-
-export interface IFieldLabel {
-	text: string;
-	position?: "top" | "left";
-	separator?: string;
-	size?: "small" | "medium";
-}
+import { IFieldLabel } from "@/types/components";
 
 const props = withDefaults(defineProps<IFieldLabel>(), {
 	position: "left",

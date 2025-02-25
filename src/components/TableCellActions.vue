@@ -1,10 +1,11 @@
 <template>
-	<article class="flex">
+	<article class="flex gap-1">
 		<BaseButton
 			v-for="(action, index) in actions"
 			:key="index"
 			plain
-			class="!h-6 !p-1"
+			class="w-auto hover:bg-sky-200"
+			size="small"
 			v-bind="action"
 		/>
 	</article>

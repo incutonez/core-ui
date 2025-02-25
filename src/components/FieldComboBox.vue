@@ -1,10 +1,10 @@
 <template>
 	<BaseField
-		v-bind="$props"
+		v-bind="baseFieldProps"
 		class="flex-start"
 	>
 		<PrimeDropdown
-			v-bind="$props"
+			v-bind="dropdownProps"
 			v-model="model"
 			class="flex-1 overflow-hidden"
 		>
@@ -21,8 +21,9 @@
 <script setup lang="ts">
 import { computed, watch } from "vue";
 import PrimeDropdown from "primevue/select";
-import BaseField, { IBaseField } from "@/components/BaseField.vue";
-import { isObject } from "@/utils/common";
+import BaseField from "@/components/BaseField.vue";
+import { IBaseField } from "@/types/components";
+import { extractBaseFieldProps, isObject } from "@/utils/common";
 
 export interface IFieldComboBox extends IBaseField {
 	options?: any[];
@@ -32,14 +33,18 @@ export interface IFieldComboBox extends IBaseField {
 	showClear?: boolean;
 	valueOnly?: boolean;
 	modelValue?: any;
+	dropdownCls?: string;
 }
 
+// TODOJEF: May need to pass in actual select props, so maybe have a computed that does that for us
+// TODOJEF: Current issue is that we can't specify a width directly on the input of the select
 const props = withDefaults(defineProps<IFieldComboBox>(), {
 	optionLabel: "name",
 	optionValue: "id",
 	valueOnly: true,
 	options: () => [],
 	modelValue: undefined,
+	dropdownCls: undefined,
 });
 const emit = defineEmits(["update:modelValue"]);
 const model = computed({
@@ -55,6 +60,20 @@ const model = computed({
 	},
 });
 const selected = defineModel<unknown>("selected");
+const baseFieldProps = computed(() => extractBaseFieldProps(props));
+const dropdownProps = computed(() => {
+	const { options, optionValue, optionLabel, valueOnly, disabled, showClear, dropdownCls } = props;
+
+	return {
+		options,
+		optionValue,
+		optionLabel,
+		valueOnly,
+		disabled,
+		showClear,
+		class: dropdownCls,
+	};
+});
 
 function getSelected(value = props.modelValue) {
 	const { optionValue } = props;

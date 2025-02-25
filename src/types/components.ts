@@ -15,14 +15,22 @@ export interface IOption {
 	[key: string]: unknown;
 }
 
+export interface IFieldLabel {
+	text: string;
+	position?: "top" | "left";
+	separator?: string;
+	size?: "small" | "medium";
+}
+
+export interface IBaseField {
+	label?: string;
+	labelPosition?: IFieldLabel["position"];
+	labelCls?: string;
+}
+
 export interface ITreeOption<T = string> extends TreeNode {
 	children?: ITreeOption<T>[];
 	data?: T;
-}
-
-export interface IGameEnum extends IOption {
-	imageSrc?: string;
-	displayName?: string;
 }
 
 /**
@@ -50,4 +58,26 @@ export interface IMenuItem {
 
 export interface ITableCellActions {
 	actions: IBaseButton[];
+}
+
+export interface IFieldTextArea extends IBaseField {
+	disabled?: boolean;
+	/**
+	 * Number of ms to delay before firing inputEnd event
+	 */
+	delay?: number;
+	inputWidth?: string;
+	autoFocus?: boolean;
+	inputClasses?: string;
+}
+
+export interface IFieldDate extends IBaseField {
+	min?: Date;
+	max?: Date;
+	timestamp?: boolean;
+	modelValue?: string | number;
+}
+
+export interface IFieldCheckbox extends IBaseField {
+	binary?: boolean;
 }

@@ -1,7 +1,11 @@
 import { computed, markRaw, reactive, ref, unref, watch } from "vue";
 import get from "just-safe-get";
 import { ColumnProps } from "primevue/column";
-import { DataTablePassThroughOptions, DataTableProps } from "primevue/datatable";
+import {
+	DataTableFilterMetaData,
+	DataTablePassThroughOptions,
+	DataTableProps,
+} from "primevue/datatable";
 import IconLock from "@/assets/IconLock.vue";
 import IconNotAllowed from "@/assets/IconNotAllowed.vue";
 import IconPin from "@/assets/IconPin.vue";
@@ -185,11 +189,11 @@ export function useDataTable<TData = unknown>(props: ITableGrid, emit: TTableEmi
 		loadRecords();
 	}
 
-	function getCellDisplay({ cellDisplay }: ITableColumn, { data, field }: { data: unknown[], field: string }) {
+	function getCellDisplay({ cellDisplay }: ITableColumn, { data, field }: { data: TData, field: string }) {
 		if (cellDisplay) {
 			return cellDisplay(data, recordsCached.value);
 		}
-		return get(data, field);
+		return get(data as TData[], field);
 	}
 
 	function getNodeDisplay({ cellDisplay }: ITableColumn, { node, column }: { node: ITreeNode, column: ITableColumn }) {
@@ -303,9 +307,29 @@ export function useDataTable<TData = unknown>(props: ITableGrid, emit: TTableEmi
 			const $max = unref(max);
 			loading.value = true;
 			try {
+				const apiFilters: unknown[] = [];
+				for (const field in filters) {
+					let filterType: string;
+					const filter = filters[field] as DataTableFilterMetaData;
+					switch (filter.matchMode) {
+						case "contains":
+							filterType = "Contains";
+							break;
+						case "gt":
+							filterType = "GreaterThan";
+							break;
+						default:
+							filterType = "Search";
+					}
+					apiFilters.push({
+						field,
+						type: filterType,
+						value: filter.value,
+					});
+				}
 				const response = await load({
 					page,
-					filters,
+					filters: apiFilters,
 					start: i,
 					limit: $max,
 				});

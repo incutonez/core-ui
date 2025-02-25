@@ -1,7 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap')
-layer(base);
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap")
 
-@import 'tailwindcss';
+  layer(base);
+
+@import "tailwindcss";
+@import "tailwindcss-primeui";
+@import "@/assets/theme/tailwind.css";
+
+/* Turning off the prefers-color-scheme mode
+ * https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually */
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --font-*: initial;

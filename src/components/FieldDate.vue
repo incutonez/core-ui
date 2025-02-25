@@ -12,14 +12,8 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import PrimeComponent from "primevue/datepicker";
-import BaseField, { IBaseField } from "@/components/BaseField.vue";
-
-export interface IFieldDate extends IBaseField {
-	min?: Date;
-	max?: Date;
-	timestamp?: boolean;
-	modelValue?: string | number;
-}
+import BaseField from "@/components/BaseField.vue";
+import { IFieldDate } from "@/types/components";
 
 const props = defineProps<IFieldDate>();
 const emit = defineEmits(["update:modelValue"]);

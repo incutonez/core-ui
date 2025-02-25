@@ -5,7 +5,8 @@
 </template>
 
 <script setup lang="ts">
-import BaseField, { IBaseField } from "@/components/BaseField.vue";
+import BaseField from "@/components/BaseField.vue";
+import { IBaseField } from "@/types/components";
 
 interface IProps extends IBaseField {
 	value?: string;

@@ -61,11 +61,12 @@ const show = defineModel<boolean>("modelValue", {
 
 function close() {
 	show.value = false;
+	emit("close");
 }
 
 function cancel() {
-	close();
 	emit("click-cancel");
+	close();
 }
 
 function onCancel() {
@@ -73,11 +74,11 @@ function onCancel() {
 }
 
 function onKeyEscape() {
-	cancel();
+	close();
 }
 
 function onClickCloseButton() {
-	cancel();
+	close();
 }
 
 defineExpose({
