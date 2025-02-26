@@ -11,6 +11,7 @@ import IconNotAllowed from "@/assets/IconNotAllowed.vue";
 import IconPin from "@/assets/IconPin.vue";
 import IconResetColumn from "@/assets/IconResetColumn.vue";
 import IconResetColumns from "@/assets/IconResetColumns.vue";
+import { TableCellActions } from "@/components";
 import { IBaseMenu } from "@/components/BaseMenu.vue";
 import { IMenuItem, IOption } from "@/types/components";
 import {
@@ -37,7 +38,7 @@ export const RowsPerPageOptions: IOption[] = [{
 	name: "100",
 }];
 
-export function getColumnProps({ field, title, classes, titleCls, titleAlign, sortable, lock, cls = "", showMenu = true, id, expandable, rowspan = 1, colspan = 1 }: ITableColumn) {
+export function getColumnProps({ field, bodyClass = "", sortFn, title, classes, titleCls, titleAlign, sortable, lock, cls = "", showMenu = true, id, expandable, rowspan = 1, colspan = 1 }: ITableColumn) {
 	const headerContentCls = [];
 	if (showMenu) {
 		headerContentCls.push("pr-10");
@@ -55,6 +56,7 @@ export function getColumnProps({ field, title, classes, titleCls, titleAlign, so
 		field,
 		rowspan,
 		colspan,
+		bodyClass,
 		pt: {
 			headerContent: {
 				class: headerContentCls,
@@ -64,6 +66,7 @@ export function getColumnProps({ field, title, classes, titleCls, titleAlign, so
 		header: title,
 		headerClass: titleCls,
 		sortable: sortable ?? true,
+		sortField: sortFn,
 		frozen: !!lock,
 		alignFrozen: lock,
 		class: cls,
@@ -408,4 +411,27 @@ export function useDataTable<TData = unknown>(props: ITableGrid, emit: TTableEmi
 
 export function getPassThroughNode<T = unknown>(options: IPassThroughOptions): ITreeNode<T> {
 	return options.parent.props.node;
+}
+
+export function useColumnIndex<T = unknown>(): ITableColumn<T> {
+	return {
+		lock: "left",
+		showMenu: false,
+		bodyClass: "!text-center",
+		cellDisplay(data, records) {
+			return records.indexOf(data) + 1;
+		},
+	};
+}
+
+export function useColumnActions<T = unknown>(cellParams: any): ITableColumn<T> {
+	return {
+		cellParams,
+		lock: "left",
+		title: "Actions",
+		titleAlign: "center",
+		showMenu: false,
+		sortable: false,
+		cellComponent: TableCellActions,
+	};
 }

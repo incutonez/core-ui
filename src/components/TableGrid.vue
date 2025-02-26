@@ -37,7 +37,7 @@ const props = withDefaults(defineProps<ITableGrid>(), {
 });
 const emit = defineEmits<ITableEmit>();
 const selectedRow = defineModel<unknown>("selectedRow");
-const { filterFields, columnsConfig, propsComponent, recordsTotal, start, loading, rowsPerPage, currentPage, recordsCached, filters, search, isPageLast, isPageFirst, startDisplay, endDisplay, totalPages, loadRecords, previousPage, nextPage, changePage, changeRowsPerPage, getColumnMenuConfig, getCellDisplay, getCellParams } = useDataTable(props, emit);
+const { filterFields, columnsConfig, propsComponent, recordsTotal, start, loading, rowsPerPage, currentPage, recordsCached, filters, search, isPageLast, isPageFirst, startDisplay, endDisplay, totalPages, loadRecords, previousPage, nextPage, changePage, changeRowsPerPage, getColumnMenuConfig, getCellClass, getCellDisplay, getCellParams } = useDataTable(props, emit);
 
 function onPagePrevious() {
 	previousPage();
@@ -133,7 +133,10 @@ defineExpose({
 					v-if="column.cellComponent"
 					v-bind="getCellParams(column, slotProps.data)"
 				/>
-				<span v-else>
+				<span
+					v-else
+					:class="getCellClass(column, slotProps.data)"
+				>
 					{{ getCellDisplay(column, slotProps as any) }}
 				</span>
 			</template>

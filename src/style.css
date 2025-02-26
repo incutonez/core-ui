@@ -19,8 +19,9 @@
 
   --color-gray-b: #9ca3af;
 
-  --color-select-200: #bae6fd;
-  --color-select-600: #0284c7;
+  --color-select-100: var(--color-sky-100);
+  --color-select-200: var(--color-sky-200);
+  --color-select-600: var(--color-sky-600);
 }
 
 /*

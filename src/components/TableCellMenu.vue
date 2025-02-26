@@ -3,6 +3,7 @@
 		<BaseButton
 			v-bind="buttonConfig"
 			:icon="IconMenu"
+			size="small"
 			@click.stop="clickToggleMenu"
 		/>
 		<BaseMenu

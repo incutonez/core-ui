@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { faker } from "@faker-js/faker";
 import { IconCopy, IconDelete, IconEdit, IconImport } from "@/assets";
-import { BaseButton, TableCellActions, TableGrid } from "@/components";
+import { BaseButton, TableGrid } from "@/components";
 import { ITableCellActions, ITableColumn } from "@/types";
-import { ITableLoad } from "@/utils";
+import { ITableLoad, useColumnActions, useColumnIndex } from "@/utils";
 
 export interface IUser {
 	id: string;
@@ -17,19 +17,9 @@ export interface IUser {
 
 const LocalUsers: IUser[] = [];
 
-const columns: ITableColumn<IUser>[] = [{
-	lock: "left",
-	showMenu: false,
-	cellDisplay(record, data) {
-		return data.indexOf(record) + 1;
-	},
-}, {
-	lock: "left",
-	title: "Actions",
-	titleAlign: "center",
-	showMenu: false,
-	cellComponent: TableCellActions,
-	cellParams(record: IUser): ITableCellActions {
+const columns: ITableColumn<IUser>[] = [
+	useColumnIndex(),
+	useColumnActions((record: IUser): ITableCellActions => {
 		return {
 			actions: [{
 				title: "Edit",
@@ -51,37 +41,37 @@ const columns: ITableColumn<IUser>[] = [{
 				},
 			}],
 		};
+	}), {
+		field: "firstName",
+		title: "First Name",
+		cls: "min-w-32",
+		lock: "left",
+	}, {
+		field: "lastName",
+		title: "Last Name",
+		cls: "min-w-32",
+		lock: "left",
+	}, {
+		field: "phone",
+		title: "Phone",
+	}, {
+		field: "email",
+		title: "Email",
+	}, {
+		field: "gender",
+		title: "Gender",
+	}, {
+		field: "birthDate",
+		title: "Birth Date",
+	}, {
+		cellComponent: BaseButton,
+		cellParams(data: IUser) {
+			return {
+				text: data.email,
+			};
+		},
 	},
-}, {
-	field: "firstName",
-	title: "First Name",
-	cls: "min-w-32",
-	lock: "left",
-}, {
-	field: "lastName",
-	title: "Last Name",
-	cls: "min-w-32",
-	lock: "left",
-}, {
-	field: "phone",
-	title: "Phone",
-}, {
-	field: "email",
-	title: "Email",
-}, {
-	field: "gender",
-	title: "Gender",
-}, {
-	field: "birthDate",
-	title: "Birth Date",
-}, {
-	cellComponent: BaseButton,
-	cellParams(data: IUser) {
-		return {
-			text: data.email,
-		};
-	},
-}];
+];
 
 async function loadUsers(request: ITableLoad) {
 	for (let i = request.start; i < request.limit + request.start; i++) {

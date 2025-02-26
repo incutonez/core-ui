@@ -18,6 +18,11 @@ export interface ITableColumn<TData = unknown> {
 	id?: string;
 	key?: string;
 	sortable?: boolean;
+	/* This currently doesn't exist as functionality, or rather, I'm not sure how it's supposed to work
+	 * Source: https://github.com/primefaces/primevue/issues/323 */
+	sortFn?: (data: TData) => string;
+	// This is used to style the cell's td
+	bodyClass?: string;
 	cellComponent?: InstanceType<any>;
 	cellParams?: any;
 	cellDisplay?: (data: TData, records: TData[]) => any;
