@@ -11,8 +11,8 @@ import IconNotAllowed from "@/assets/IconNotAllowed.vue";
 import IconPin from "@/assets/IconPin.vue";
 import IconResetColumn from "@/assets/IconResetColumn.vue";
 import IconResetColumns from "@/assets/IconResetColumns.vue";
-import { TableCellActions } from "@/components";
 import { IBaseMenu } from "@/components/BaseMenu.vue";
+import TableCellActions from "@/components/TableCellActions.vue";
 import { IMenuItem, IOption } from "@/types/components";
 import {
 	IPassThroughOptions,
