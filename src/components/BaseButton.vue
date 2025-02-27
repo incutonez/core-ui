@@ -5,6 +5,7 @@
 		:size="size"
 		:plain="plain"
 		:loading="loading"
+		:severity="severity"
 	>
 		<template #icon>
 			<slot name="icon">
@@ -27,6 +28,7 @@ withDefaults(defineProps<IBaseButton>(), {
 	text: undefined,
 	icon: undefined,
 	iconCls: undefined,
+	severity: "normal",
 });
 defineSlots<{
 	icon(): VNode;

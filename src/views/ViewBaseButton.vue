@@ -16,11 +16,23 @@ const actions: IBaseButton[] = [{
 </script>
 
 <template>
-	<article class="flex flex-col gap-4 items-start p-4">
+	<article class="flex flex-col gap-4 items-start">
 		<BaseButton text="Normal" />
 		<BaseButton
 			text="Disabled"
 			disabled
+		/>
+		<BaseButton
+			text="Warn"
+			severity="warn"
+		/>
+		<BaseButton
+			text="Danger"
+			severity="danger"
+		/>
+		<BaseButton
+			text="Secondary"
+			severity="secondary"
 		/>
 		<BaseButton :icon="IconPageLeft" />
 		<TableCellActions :actions="actions" />

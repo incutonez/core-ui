@@ -36,8 +36,6 @@ export interface IFieldComboBox extends IBaseField {
 	dropdownCls?: string;
 }
 
-// TODOJEF: May need to pass in actual select props, so maybe have a computed that does that for us
-// TODOJEF: Current issue is that we can't specify a width directly on the input of the select
 const props = withDefaults(defineProps<IFieldComboBox>(), {
 	optionLabel: "name",
 	optionValue: "id",

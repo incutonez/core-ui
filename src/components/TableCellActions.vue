@@ -4,7 +4,7 @@
 			v-for="(action, index) in actions"
 			:key="index"
 			plain
-			class="w-auto hover:bg-sky-200"
+			class="w-auto hover:bg-sky-300"
 			size="small"
 			v-bind="action"
 		/>

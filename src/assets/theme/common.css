@@ -51,7 +51,7 @@
 }
 
 .p-overlay-mask {
-  @apply bg-black/50 text-surface-200 transition-colors duration-150 fixed top-0 start-0 w-full h-full;
+  @apply bg-gray-300/60 text-surface-200 transition-colors duration-150 fixed top-0 start-0 w-full h-full;
 }
 
 .p-overlay-mask-enter {
@@ -67,13 +67,13 @@
     background: transparent;
   }
   to {
-    background: rgba(0, 0, 0, 0.5);
+    background-color: color-mix(in oklab, var(--color-gray-300) 60%, transparent);
   }
 }
 
 @keyframes p-overlay-mask-leave-animation {
   from {
-    background: rgba(0, 0, 0, 0.5);
+    background-color: color-mix(in oklab, var(--color-gray-300) 60%, transparent);
   }
   to {
     background: transparent;

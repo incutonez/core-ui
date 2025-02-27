@@ -72,6 +72,13 @@ export type ITableEmit = {
 	load: [];
 }
 
+export interface ITableLoad {
+	page: number;
+	filters: unknown[];
+	start: number;
+	limit: number;
+}
+
 export interface IColumnState {
 	lock?: TColumnLock;
 	width?: number;

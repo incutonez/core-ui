@@ -5,6 +5,7 @@
 			class="flex-1"
 			:min-date="min"
 			:max-date="max"
+			:input-class="inputClasses"
 		/>
 	</BaseField>
 </template>

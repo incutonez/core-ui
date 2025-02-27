@@ -17,7 +17,7 @@
   --text-1: 1rem;
   --text-1_25: 1.25rem;
 
-  --color-gray-b: #9ca3af;
+  --color-gray-b: var(--color-gray-400);
 
   --color-select-100: var(--color-sky-100);
   --color-select-200: var(--color-sky-200);
@@ -38,6 +38,6 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+    border-color: var(--color-gray-b, currentColor);
   }
 }

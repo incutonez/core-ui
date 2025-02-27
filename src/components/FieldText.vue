@@ -24,25 +24,12 @@
 </template>
 
 <script setup lang="ts">
-import { ComponentInstance, computed, InputTypeHTMLAttribute, onMounted, ref, unref, watch } from "vue";
+import { ComponentInstance, computed, onMounted, ref, unref, watch } from "vue";
 import PrimeInputText from "primevue/inputtext";
 import IconClear from "@/assets/IconClear.vue";
 import BaseButton from "@/components/BaseButton.vue";
 import BaseField from "@/components/BaseField.vue";
-import { IBaseField } from "@/types/components";
-
-interface IFieldText extends IBaseField {
-	showClear?: boolean;
-	disabled?: boolean;
-	type?: InputTypeHTMLAttribute;
-	/**
-   * Number of ms to delay before firing inputEnd event
-   */
-	delay?: number;
-	inputWidth?: string;
-	autoFocus?: boolean;
-	autoSelect?: boolean;
-}
+import { IFieldText } from "@/types/components";
 
 const props = withDefaults(defineProps<IFieldText>(), {
 	showClear: true,

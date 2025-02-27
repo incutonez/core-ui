@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import { faker } from "@faker-js/faker";
 import { IconCopy, IconDelete, IconEdit, IconImport } from "@/assets";
-import { BaseButton, TableGrid } from "@/components";
-import { ITableCellActions, ITableColumn } from "@/types";
-import { ITableLoad, useColumnActions, useColumnIndex } from "@/utils";
+import { BaseButton, DialogConfirm, TableGrid } from "@/components";
+import { ITableCellActions, ITableColumn, ITableLoad } from "@/types";
+import { sleep, useColumnActions, useColumnIndex } from "@/utils";
 
 export interface IUser {
 	id: string;
@@ -16,7 +17,9 @@ export interface IUser {
 }
 
 const LocalUsers: IUser[] = [];
-
+const selectedUser = ref<IUser>();
+const deleting = ref(false);
+const showDeleteDialog = ref(false);
 const columns: ITableColumn<IUser>[] = [
 	useColumnIndex(),
 	useColumnActions((record: IUser): ITableCellActions => {
@@ -37,7 +40,8 @@ const columns: ITableColumn<IUser>[] = [
 				title: "Delete",
 				icon: IconDelete,
 				onClick() {
-					alert(`Delete User ${record.firstName} ${record.lastName}`);
+					selectedUser.value = record;
+					showDeleteDialog.value = true;
 				},
 			}],
 		};
@@ -92,25 +96,41 @@ async function loadUsers(request: ITableLoad) {
 }
 
 function onClickImportUsers() {
+}
 
+async function onDeleteUser() {
+	deleting.value = true;
+	// Simulate lag to show deleting spinner
+	await sleep(2000);
+	deleting.value = false;
+	showDeleteDialog.value = false;
 }
 </script>
 
 <template>
-	<TableGrid
-		title="Users"
-		:columns="columns"
-		:load="loadUsers"
-		:show-add-entity="false"
-		remote
-		:remote-max="15"
-	>
-		<template #headerEnd>
-			<BaseButton
-				text="Import"
-				:icon="IconImport"
-				@click="onClickImportUsers"
-			/>
-		</template>
-	</TableGrid>
+	<article class="flex size-full">
+		<TableGrid
+			title="Users"
+			:columns="columns"
+			:load="loadUsers"
+			:show-add-entity="false"
+			remote
+			:remote-max="15"
+		>
+			<template #headerEnd>
+				<BaseButton
+					text="Import"
+					:icon="IconImport"
+					@click="onClickImportUsers"
+				/>
+			</template>
+		</TableGrid>
+		<DialogConfirm
+			v-model="showDeleteDialog"
+			action="Delete"
+			:entity-name="selectedUser?.firstName"
+			:loading="deleting"
+			@confirm="onDeleteUser"
+		/>
+	</article>
 </template>

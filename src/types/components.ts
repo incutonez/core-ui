@@ -1,5 +1,5 @@
 // TODOJEF: Add Symbol for disabled options, and then set it up to use that in the optionDisabled fn
-import type { Component, HTMLAttributes, ObjectEmitsOptions } from "vue";
+import type { Component, HTMLAttributes, InputTypeHTMLAttribute, ObjectEmitsOptions } from "vue";
 // eslint-disable-next-line vue/prefer-import-from-vue
 import { UnionToIntersection } from "@vue/shared";
 import { TreeNode } from "primevue/treenode";
@@ -45,6 +45,7 @@ export interface IBaseButton extends /** @vue-ignore */ HTMLAttributes {
 	loading?: boolean;
 	size?: "small" | "large";
 	plain?: boolean;
+	severity?: "normal" | "warn" | "danger" | "secondary";
 }
 
 export interface IMenuItem {
@@ -58,6 +59,19 @@ export interface IMenuItem {
 
 export interface ITableCellActions {
 	actions: IBaseButton[];
+}
+
+export interface IFieldText extends IBaseField {
+	showClear?: boolean;
+	disabled?: boolean;
+	type?: InputTypeHTMLAttribute;
+	/**
+	 * Number of ms to delay before firing inputEnd event
+	 */
+	delay?: number;
+	inputWidth?: string;
+	autoFocus?: boolean;
+	autoSelect?: boolean;
 }
 
 export interface IFieldTextArea extends IBaseField {
@@ -76,6 +90,7 @@ export interface IFieldDate extends IBaseField {
 	max?: Date;
 	timestamp?: boolean;
 	modelValue?: string | number;
+	inputClasses?: string;
 }
 
 export interface IFieldCheckbox extends IBaseField {
