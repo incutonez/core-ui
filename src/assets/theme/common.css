@@ -34,7 +34,7 @@
 
 .p-disabled,
 .p-disabled * {
-  @apply cursor-default pointer-events-none select-none;
+  @apply cursor-not-allowed pointer-events-none select-none;
 }
 
 .p-disabled,

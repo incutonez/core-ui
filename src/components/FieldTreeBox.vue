@@ -1,20 +1,10 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import PrimeTreeSelect from "primevue/treeselect";
 import BaseField from "@/components/BaseField.vue";
-import { IBaseField, ITreeOption } from "@/types/components";
-
-export type IFieldTreeBoxSelection = Record<string, boolean>;
-
-export interface IFieldTreeBox extends IBaseField {
-	options?: ITreeOption[];
-	optionLabel?: string | undefined;
-	optionValue?: string | undefined;
-	disabled?: boolean;
-	showClear?: boolean;
-	valueOnly?: boolean;
-	modelValue?: string | IFieldTreeBoxSelection;
-}
+import { ITreeNode } from "@/types";
+import { IFieldTreeBox, ITreeOption } from "@/types/components";
+import { extractBaseFieldProps, isEmpty } from "@/utils/common";
 
 const props = withDefaults(defineProps<IFieldTreeBox>(), {
 	optionLabel: "label",
@@ -24,6 +14,10 @@ const props = withDefaults(defineProps<IFieldTreeBox>(), {
 	options: () => [],
 });
 const emit = defineEmits(["update:modelValue"]);
+/* We use any here because we can't use InstanceType<typeof PrimeTreeSelect>, as it doesn't expose $refs, which
+ * we need access to for the tree component, so we can toggle nodes at will */
+const cmpRoot = ref<any>();
+const baseFieldProps = computed(() => extractBaseFieldProps(props));
 const selected = defineModel<ITreeOption>("selected");
 const model = computed({
 	get() {
@@ -42,6 +36,19 @@ const model = computed({
 		selected.value = getSelected(props.options, selections[0]);
 	},
 });
+const dropdownProps = computed(() => {
+	const { options, optionValue, optionLabel, valueOnly, disabled, showClear, dropdownCls } = props;
+
+	return {
+		options,
+		optionValue,
+		optionLabel,
+		valueOnly,
+		disabled,
+		showClear,
+		class: dropdownCls,
+	};
+});
 
 function getSelected(options: ITreeOption[], value: string): ITreeOption | undefined {
 	const { optionValue } = props;
@@ -54,13 +61,35 @@ function getSelected(options: ITreeOption[], value: string): ITreeOption | undef
 		}
 	});
 }
+
+function toggleNode(node: ITreeNode) {
+	const $tree = cmpRoot.value?.$refs.tree;
+	if ($tree) {
+		$tree.onNodeToggle(node);
+	}
+}
+
+function onNodeSelect(node: ITreeNode) {
+	if (!isEmpty(node.children) && node.selectable === false) {
+		toggleNode(node);
+	}
+}
 </script>
 
 <template>
-	<BaseField v-bind="$props">
+	<BaseField v-bind="baseFieldProps">
 		<PrimeTreeSelect
-			v-bind="$props"
+			ref="cmpRoot"
+			v-bind="dropdownProps"
 			v-model="model"
-		/>
+			@click="onNodeSelect"
+		>
+			<template #option="{node}">
+				<span
+					class="flex-1"
+					@click.prevent="onNodeSelect(node)"
+				>{{ node[optionLabel as keyof typeof node] }}</span>
+			</template>
+		</PrimeTreeSelect>
 	</BaseField>
 </template>

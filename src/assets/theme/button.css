@@ -16,11 +16,15 @@
     @apply p-1;
   }
 
-  &.p-button-lg > svg {
+  & > .p-button-icon {
+    @apply fill-gray-800;
+  }
+
+  &.p-button-lg > .p-button-icon {
     @apply size-6;
   }
 
-  &.p-button-sm > svg {
+  &.p-button-sm > .p-button-icon {
     @apply size-4;
   }
 }
@@ -90,7 +94,7 @@
 }
 
 .p-button-normal:not(.p-button-plain) {
-  @apply bg-sky-200 enabled:hover:bg-sky-300 enabled:active:bg-sky-300
+  @apply bg-sky-200 enabled:hover:bg-sky-300 enabled:active:bg-sky-300 text-gray-800
     focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-offset-sky-500 focus:ring-offset-2
     focus:ring-sky-400;
 }
@@ -112,7 +116,7 @@
     focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-offset-red-800 focus:ring-offset-2
     focus:ring-red-700;
 
-  > svg {
+  > .p-button-icon {
     @apply fill-white;
   }
 }
@@ -120,7 +124,7 @@
 .p-button-text {
   @apply bg-transparent enabled:hover:bg-primary-50 enabled:active:bg-primary-100
     border-transparent enabled:hover:border-transparent enabled:active:border-transparent
-    text-primary enabled:hover:text-primary enabled:active:text-primary;
+    text-gray-800 enabled:hover:text-gray-800 enabled:active:text-gray-800;
 }
 
 .p-button-text.p-button-secondary {
@@ -144,13 +148,13 @@
 .p-button-text.p-button-plain {
   @apply bg-transparent enabled:hover:bg-surface-50 enabled:active:bg-surface-100
     border-transparent enabled:hover:border-transparent enabled:active:border-transparent
-    text-surface-700 enabled:hover:text-surface-700 enabled:active:text-surface-700;
+    text-gray-800 enabled:hover:text-gray-800 enabled:active:text-gray-800;
 }
 
 .p-button-link {
   @apply bg-transparent enabled:hover:bg-transparent enabled:active:bg-transparent
     border-transparent enabled:hover:border-transparent enabled:active:border-transparent
-    text-primary enabled:hover:text-primary enabled:active:text-primary;
+    text-gray-800 enabled:hover:text-gray-800 enabled:active:text-gray-800;
 }
 
 .p-button-link:not(:disabled):hover .p-button-label {

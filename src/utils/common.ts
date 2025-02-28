@@ -1,5 +1,5 @@
 import get from "just-safe-get";
-import { capitalize, isFunction as lodashIsFunction, isObject as lodashIsObject } from "lodash-es";
+import { capitalize, isFunction as lodashIsFunction, isObject as lodashIsObject, startCase } from "lodash-es";
 import MimeTypes from "mime-types";
 import pluralize from "pluralize";
 import { IBaseField } from "@/types/components";
@@ -9,6 +9,8 @@ export { default as clone } from "just-clone";
 export { snakeCase, camelCase } from "lodash-es";
 
 export const capitalCase = capitalize;
+
+export const capitalizeWords = startCase;
 
 const SplitCapitalizeRe = /[a-z]+|[A-Z]+[a-z]*/g;
 // TODO: Get i18n string from somewhere

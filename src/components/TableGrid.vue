@@ -19,7 +19,7 @@ import FieldNumber from "@/components/FieldNumber.vue";
 import FieldText from "@/components/FieldText.vue";
 import TableCellMenu from "@/components/TableCellMenu.vue";
 import { ITableEmit, ITableGrid } from "@/types/table";
-import { RowsPerPageOptions, useDataTable } from "@/utils/table";
+import { getColumnSortClasses, RowsPerPageOptions, useDataTable } from "@/utils/table";
 
 const props = withDefaults(defineProps<ITableGrid>(), {
 	showLinesColumn: true,
@@ -123,7 +123,7 @@ defineExpose({
 				<template v-if="slotProps.sorted">
 					<IconSort
 						class="ml-1.5 size-4"
-						:class="slotProps.sortOrder === 1 ? 'rotate-180 -scale-x-100' : ''"
+						:class="getColumnSortClasses(slotProps)"
 					/>
 				</template>
 			</template>

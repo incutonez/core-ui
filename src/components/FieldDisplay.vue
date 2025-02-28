@@ -9,7 +9,7 @@ import BaseField from "@/components/BaseField.vue";
 import { IBaseField } from "@/types/components";
 
 interface IProps extends IBaseField {
-	value?: string;
+	value?: string | number | Date | boolean;
 }
 defineProps<IProps>();
 </script>

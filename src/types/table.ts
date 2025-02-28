@@ -91,6 +91,7 @@ export interface ITreeNode<T = any> {
 	data: T;
 	key: string;
 	leaf?: boolean;
+	selectable?: boolean;
 	root?: boolean;
 	children?: ITreeNode[];
 }

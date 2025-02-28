@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { IconCopy, IconDelete, IconEdit, IconPageLeft } from "@/assets";
+import { IconCopy, IconDelete, IconEdit } from "@/assets";
 import { BaseButton, TableCellActions } from "@/components";
 import { IBaseButton } from "@/types";
 
@@ -17,7 +17,14 @@ const actions: IBaseButton[] = [{
 
 <template>
 	<article class="flex flex-col gap-4 items-start">
-		<BaseButton text="Normal" />
+		<section class="flex gap-4">
+			<BaseButton text="Text" />
+			<BaseButton
+				text="Text + Icon"
+				:icon="IconDelete"
+			/>
+			<BaseButton :icon="IconDelete" />
+		</section>
 		<BaseButton
 			text="Disabled"
 			disabled
@@ -34,7 +41,6 @@ const actions: IBaseButton[] = [{
 			text="Secondary"
 			severity="secondary"
 		/>
-		<BaseButton :icon="IconPageLeft" />
 		<TableCellActions :actions="actions" />
 	</article>
 </template>

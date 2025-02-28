@@ -7,11 +7,11 @@
 		:loading="loading"
 		:severity="severity"
 	>
-		<template #icon>
+		<template #icon="slotProps">
 			<slot name="icon">
 				<Component
 					:is="icon"
-					:class="iconCls"
+					:class="getIconCls(slotProps, iconCls)"
 				/>
 			</slot>
 		</template>
@@ -33,4 +33,9 @@ withDefaults(defineProps<IBaseButton>(), {
 defineSlots<{
 	icon(): VNode;
 }>();
+
+function getIconCls(slotProps: {class: string}, iconCls = "") {
+	iconCls += ` ${slotProps.class}`;
+	return iconCls;
+}
 </script>

@@ -3,6 +3,7 @@
 		<PrimeCheckbox
 			v-model="modelValue"
 			:binary="binary"
+			class="justify-self-center"
 		/>
 	</BaseField>
 </template>

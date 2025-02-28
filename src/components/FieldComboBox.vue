@@ -1,42 +1,11 @@
-<template>
-	<BaseField
-		v-bind="baseFieldProps"
-		class="flex-start"
-	>
-		<PrimeDropdown
-			v-bind="dropdownProps"
-			v-model="model"
-			class="flex-1 overflow-hidden"
-		>
-			<template #header>
-				<slot name="header" />
-			</template>
-			<template #footer>
-				<slot name="footer" />
-			</template>
-		</PrimeDropdown>
-	</BaseField>
-</template>
-
-<script setup lang="ts">
+<script setup lang="ts" generic="TOptions = IOption[], TData = IOption">
 import { computed, watch } from "vue";
 import PrimeDropdown from "primevue/select";
 import BaseField from "@/components/BaseField.vue";
-import { IBaseField } from "@/types/components";
+import { IFieldComboBox, IOption } from "@/types/components";
 import { extractBaseFieldProps, isObject } from "@/utils/common";
 
-export interface IFieldComboBox extends IBaseField {
-	options?: any[];
-	optionLabel?: string | ((data: any) => string) | undefined;
-	optionValue?: string | ((data: any) => any) | undefined;
-	disabled?: boolean;
-	showClear?: boolean;
-	valueOnly?: boolean;
-	modelValue?: any;
-	dropdownCls?: string;
-}
-
-const props = withDefaults(defineProps<IFieldComboBox>(), {
+const props = withDefaults(defineProps<IFieldComboBox<TOptions, TData>>(), {
 	optionLabel: "name",
 	optionValue: "id",
 	valueOnly: true,
@@ -53,7 +22,7 @@ const model = computed({
 		}
 		return modelValue;
 	},
-	set(value) {
+	set(value: TData) {
 		emit("update:modelValue", props.valueOnly ? value : getSelected(value));
 	},
 });
@@ -82,3 +51,23 @@ watch(() => props.modelValue, () => selected.value = getSelected(), {
 	immediate: true,
 });
 </script>
+
+<template>
+	<BaseField
+		v-bind="baseFieldProps"
+		class="flex-start"
+	>
+		<PrimeDropdown
+			v-bind="dropdownProps"
+			v-model="model"
+			class="flex-1 overflow-hidden"
+		>
+			<template #header>
+				<slot name="header" />
+			</template>
+			<template #footer>
+				<slot name="footer" />
+			</template>
+		</PrimeDropdown>
+	</BaseField>
+</template>

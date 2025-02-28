@@ -18,7 +18,7 @@
 				<template v-if="slotProps.sorted">
 					<IconSort
 						class="ml-1.5 size-4"
-						:class="slotProps.sortOrder === 1 ? 'rotate-180 -scale-x-100' : ''"
+						:class="getColumnSortClasses(slotProps)"
 					/>
 				</template>
 			</template>
@@ -48,12 +48,17 @@
 			</template>
 		</Column>
 		<template #header>
-			<section class="flex">
-				<h2 v-if="title">
+			<section
+				v-if="showHeader"
+				class="flex items-center"
+			>
+				<h2
+					v-if="title"
+					class="font-semibold"
+				>
 					{{ title }}
 				</h2>
 				<section class="ml-auto flex gap-x-2">
-					<slot name="beforeSearch" />
 					<FieldText
 						v-if="showSearch"
 						v-model="search"
@@ -70,52 +75,51 @@
 							:icon="IconAdd"
 						/>
 					</slot>
+					<slot name="headerEnd" />
 				</section>
 			</section>
 		</template>
-		<template #footer>
-			<article class="flex items-center justify-between">
-				<FieldComboBox
-					v-if="showRowsPerPage"
-					:model-value="rowsPerPage"
-					class="w-auto"
-					label-cls="text-sm"
-					label="Rows"
-					:options="RowsPerPageOptions"
-					@update:model-value="onChangeRows"
+		<template #paginatorcontainer>
+			<FieldComboBox
+				v-if="showRowsPerPage"
+				:model-value="rowsPerPage"
+				dropdown-cls="w-16"
+				label-cls="text-sm"
+				label="Rows"
+				:options="RowsPerPageOptions"
+				@update:model-value="onChangeRows"
+			/>
+			<section class="flex items-center gap-x-2">
+				<BaseButton
+					title="Previous"
+					:disabled="isPageFirst"
+					plain
+					class="!p-0"
+					:icon="IconPageLeft"
+					icon-cls="h-8 w-8"
+					@click="onPagePrevious"
 				/>
-				<section class="flex items-center gap-x-2">
-					<BaseButton
-						title="Previous"
-						:disabled="isPageFirst"
-						plain
-						class="!p-0"
-						:icon="IconPageLeft"
-						icon-cls="h-8 w-8"
-						@click="onPagePrevious"
-					/>
-					<FieldNumber
-						label="Page"
-						input-width="w-10"
-						input-cls="text-center !px-2 !py-1"
-						label-cls="text-sm"
-						:min="1"
-						:model-value="currentPage"
-						@update:model-value="onChangePage"
-					/>
-					<span class="text-sm">of {{ totalPages }}</span>
-					<BaseButton
-						title="Next"
-						:disabled="isPageLast"
-						plain
-						class="!p-0"
-						:icon="IconPageRight"
-						icon-cls="h-8 w-8"
-						@click="onPageNext"
-					/>
-				</section>
-				<span class="text-sm">{{ startDisplay }} - {{ endDisplay }} of {{ recordsTotal }}</span>
-			</article>
+				<FieldNumber
+					label="Page"
+					input-width="w-10"
+					input-cls="text-center !px-2 !py-1"
+					label-cls="text-sm"
+					:min="1"
+					:model-value="currentPage"
+					@update:model-value="onChangePage"
+				/>
+				<span class="text-sm">of {{ totalPages }}</span>
+				<BaseButton
+					title="Next"
+					:disabled="isPageLast"
+					plain
+					class="!p-0"
+					:icon="IconPageRight"
+					icon-cls="h-8 w-8"
+					@click="onPageNext"
+				/>
+			</section>
+			<span class="text-sm">{{ startDisplay }} - {{ endDisplay }} of {{ recordsTotal }}</span>
 		</template>
 	</PrimeTreeTable>
 </template>
@@ -136,13 +140,15 @@ import FieldText from "@/components/FieldText.vue";
 import TableCellMenu from "@/components/TableCellMenu.vue";
 import { ITableEmit, ITableFilter, ITableGrid, ITableTreeFilter, ITreeNode } from "@/types/table";
 import { clone, isEmpty } from "@/utils/common";
-import { RowsPerPageOptions, useDataTable } from "@/utils/table";
+import { getColumnSortClasses, RowsPerPageOptions, useDataTable } from "@/utils/table";
 
 const props = withDefaults(defineProps<ITableGrid>(), {
+	showHeader: true,
 	showLinesColumn: true,
 	showLinesRow: true,
 	showHoverRow: true,
 	showStripedRows: true,
+	showPagination: true,
 	showRowsPerPage: true,
 	multiSelect: false,
 	columnsResize: true,
@@ -218,7 +224,7 @@ function includeInFilter({ record, filters, filterFields }: { record: ITreeNode,
 			break;
 		}
 	}
-	if (record.children) {
+	if (record.children?.length) {
 		record.children = record.children.filter((node) => includeInFilter({
 			filters,
 			filterFields,

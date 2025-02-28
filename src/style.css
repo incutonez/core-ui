@@ -18,7 +18,7 @@
   --text-1_25: 1.25rem;
 
   --color-gray-b: var(--color-gray-400);
-
+  --color-disabled: var(--color-gray-200);
   --color-select-100: var(--color-sky-100);
   --color-select-200: var(--color-sky-200);
   --color-select-600: var(--color-sky-600);

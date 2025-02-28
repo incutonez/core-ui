@@ -183,7 +183,7 @@
 }
 
 .p-datatable-header-cell {
-  @apply py-3 px-4 font-semibold text-xs text-start transition-colors duration-200
+  @apply py-3 px-4 font-semibold text-xs text-start
     border-b border-gray-b bg-slate-300 text-gray-700 uppercase;
 }
 
@@ -191,12 +191,8 @@
   @apply font-semibold;
 }
 
-.p-datatable-tbody > tr {
-  @apply transition-colors duration-200;
-}
-
 .p-datatable-tbody > tr > td {
-  @apply text-sm text-start py-3 px-4 border-b border-gray-b;
+  @apply text-sm text-gray-800 text-start py-3 px-4 border-b border-gray-b;
 }
 
 .p-datatable-tbody > tr:has(+ .p-datatable-row-selected) > td {
@@ -231,23 +227,15 @@
 }
 
 .p-datatable-sort-icon {
-  @apply text-blue-700 transition-colors duration-200;
+  @apply fill-gray-800;
 }
 
 .p-datatable-sortable-column:not(.p-datatable-column-sorted):hover {
   @apply bg-select-200;
 }
 
-.p-datatable-sortable-column:not(.p-datatable-column-sorted):hover .p-datatable-sort-icon {
-  @apply text-blue-700;
-}
-
 .p-datatable-column-sorted {
   @apply bg-select-200;
-}
-
-.p-datatable-column-sorted .p-datatable-sort-icon {
-  @apply bg-highlight;
 }
 
 .p-datatable-hoverable .p-datatable-selectable-row {

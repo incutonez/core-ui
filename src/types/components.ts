@@ -28,6 +28,7 @@ export interface IBaseField {
 	labelCls?: string;
 }
 
+// TODOJEF: Can this be combined into types/table.ts:ITreeNode?
 export interface ITreeOption<T = string> extends TreeNode {
 	children?: ITreeOption<T>[];
 	data?: T;
@@ -89,10 +90,27 @@ export interface IFieldDate extends IBaseField {
 	min?: Date;
 	max?: Date;
 	timestamp?: boolean;
-	modelValue?: string | number;
+	modelValue?: string | number | Date;
 	inputClasses?: string;
 }
 
 export interface IFieldCheckbox extends IBaseField {
 	binary?: boolean;
 }
+
+export interface IFieldComboBox<TOption = IOption, TData = IOption> extends IBaseField {
+	options?: TOption[];
+	optionLabel?: string | ((data: TData) => string) | undefined;
+	optionValue?: string | ((data: TData) => unknown) | undefined;
+	disabled?: boolean;
+	showClear?: boolean;
+	valueOnly?: boolean;
+	modelValue?: TData;
+	dropdownCls?: string;
+}
+
+/**
+ * PrimeVue returns a weird object when a selection is made... it's usually the key + whether that value is selected
+ * or not, which is why boolean is the value.
+ */
+export type IFieldTreeBox = IFieldComboBox<ITreeOption, string | Record<string, boolean>>;

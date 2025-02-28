@@ -20,14 +20,18 @@ const props = defineProps<IFieldDate>();
 const emit = defineEmits(["update:modelValue"]);
 const input = computed({
 	get() {
-		return new Date(props.modelValue ?? "");
+		const { modelValue } = props;
+		if (modelValue instanceof Date) {
+			return modelValue;
+		}
+		return modelValue ? new Date(modelValue) : undefined;
 	},
 	set(value) {
 		if (props.timestamp) {
-			if (!(value instanceof Date)) {
+			if (value && !(value instanceof Date)) {
 				value = new Date(value);
 			}
-			emit("update:modelValue", value.getTime());
+			emit("update:modelValue", value?.getTime());
 		}
 		else {
 			emit("update:modelValue", value);

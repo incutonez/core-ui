@@ -435,3 +435,9 @@ export function useColumnActions<T = unknown>(cellParams: any): ITableColumn<T> 
 		cellComponent: TableCellActions,
 	};
 }
+
+export function getColumnSortClasses(slotProps: { class: string, sortOrder: number}) {
+	let cls = slotProps.class;
+	cls += slotProps.sortOrder === 1 ? " rotate-180 -scale-x-100" : "";
+	return cls;
+}
