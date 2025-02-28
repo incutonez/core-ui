@@ -9,6 +9,9 @@
 			<BaseButton
 				:text="actionUpper"
 				:loading="loading"
+				:icon="IconDelete"
+				severity="danger"
+				icon-cls="w-5"
 				@click="onClickConfirm"
 			/>
 		</template>
@@ -17,6 +20,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
+import IconDelete from "@/assets/IconDelete.vue";
 import BaseButton from "@/components/BaseButton.vue";
 import BaseDialog from "@/components/BaseDialog.vue";
 

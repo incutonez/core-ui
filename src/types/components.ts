@@ -1,5 +1,5 @@
 // TODOJEF: Add Symbol for disabled options, and then set it up to use that in the optionDisabled fn
-import type { Component, HTMLAttributes, ObjectEmitsOptions } from "vue";
+import type { Component, HTMLAttributes, InputTypeHTMLAttribute, ObjectEmitsOptions } from "vue";
 // eslint-disable-next-line vue/prefer-import-from-vue
 import { UnionToIntersection } from "@vue/shared";
 import { TreeNode } from "primevue/treenode";
@@ -15,14 +15,23 @@ export interface IOption {
 	[key: string]: unknown;
 }
 
+export interface IFieldLabel {
+	text: string;
+	position?: "top" | "left";
+	separator?: string;
+	size?: "small" | "medium";
+}
+
+export interface IBaseField {
+	label?: string;
+	labelPosition?: IFieldLabel["position"];
+	labelCls?: string;
+}
+
+// TODOJEF: Can this be combined into types/table.ts:ITreeNode?
 export interface ITreeOption<T = string> extends TreeNode {
 	children?: ITreeOption<T>[];
 	data?: T;
-}
-
-export interface IGameEnum extends IOption {
-	imageSrc?: string;
-	displayName?: string;
 }
 
 /**
@@ -37,6 +46,7 @@ export interface IBaseButton extends /** @vue-ignore */ HTMLAttributes {
 	loading?: boolean;
 	size?: "small" | "large";
 	plain?: boolean;
+	severity?: "normal" | "warn" | "danger" | "secondary";
 }
 
 export interface IMenuItem {
@@ -47,3 +57,60 @@ export interface IMenuItem {
 	click?: () => void;
 	items?: IMenuItem[];
 }
+
+export interface ITableCellActions {
+	actions: IBaseButton[];
+}
+
+export interface IFieldText extends IBaseField {
+	showClear?: boolean;
+	disabled?: boolean;
+	type?: InputTypeHTMLAttribute;
+	/**
+	 * Number of ms to delay before firing inputEnd event
+	 */
+	delay?: number;
+	inputWidth?: string;
+	autoFocus?: boolean;
+	autoSelect?: boolean;
+}
+
+export interface IFieldTextArea extends IBaseField {
+	disabled?: boolean;
+	/**
+	 * Number of ms to delay before firing inputEnd event
+	 */
+	delay?: number;
+	inputWidth?: string;
+	autoFocus?: boolean;
+	inputClasses?: string;
+}
+
+export interface IFieldDate extends IBaseField {
+	min?: Date;
+	max?: Date;
+	timestamp?: boolean;
+	modelValue?: string | number | Date;
+	inputClasses?: string;
+}
+
+export interface IFieldCheckbox extends IBaseField {
+	binary?: boolean;
+}
+
+export interface IFieldComboBox<TOption = IOption, TData = IOption> extends IBaseField {
+	options?: TOption[];
+	optionLabel?: string | ((data: TData) => string) | undefined;
+	optionValue?: string | ((data: TData) => unknown) | undefined;
+	disabled?: boolean;
+	showClear?: boolean;
+	valueOnly?: boolean;
+	modelValue?: TData;
+	dropdownCls?: string;
+}
+
+/**
+ * PrimeVue returns a weird object when a selection is made... it's usually the key + whether that value is selected
+ * or not, which is why boolean is the value.
+ */
+export type IFieldTreeBox = IFieldComboBox<ITreeOption, string | Record<string, boolean>>;

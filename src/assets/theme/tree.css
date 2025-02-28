@@ -1,0 +1,100 @@
+.p-tree {
+  @apply bg-white p-4;
+}
+
+.p-tree-node-children {
+  @apply flex flex-col list-none m-0;
+}
+
+.p-tree-node-children {
+  @apply ps-4;
+}
+
+.p-tree-node {
+  @apply p-0 outline-none;
+}
+
+/* We want to flex-1 this, so it takes up the entire space, and our custom span inside of it (for clicking) will also
+ * take up all the space, so we can simulate clicking anywhere on that line */
+.p-tree-node-label {
+  @apply flex flex-1 text-gray-800;
+}
+
+.p-tree-node-content {
+  @apply px-2 py-1 flex items-center rounded-xl;
+
+  &:hover {
+    @apply bg-select-100 rounded-xl;
+  }
+}
+
+.p-tree-node:focus-visible > .p-tree-node-content {
+  @apply ring-2 ring-inset ring-sky-700;
+}
+
+.p-tree-node-content.p-tree-node-selected {
+  @apply bg-select-200 font-semibold;
+}
+
+.p-tree-node-content.p-tree-node-selected .p-tree-node-toggle-button {
+  @apply text-inherit;
+}
+
+.p-tree-node-toggle-button {
+  @apply cursor-pointer select-none inline-flex justify-center rounded-full items-center overflow-hidden relative
+    flex-shrink-0 size-5 p-0 border-none fill-gray-800
+    bg-transparent enabled:hover:bg-surface-100 text-surface-500 enabled:hover:text-surface-600;
+
+  & > .p-tree-node-toggle-icon {
+    @apply size-3 mr-1;
+  }
+}
+
+.p-tree-root {
+  @apply overflow-auto;
+}
+
+button.p-tree-node-toggle-button ~ .p-tree-node-label,
+.p-tree-node-selectable {
+  @apply cursor-pointer select-none;
+}
+
+.p-tree-node-leaf > .p-tree-node-content .p-tree-node-toggle-button {
+  @apply invisible;
+}
+
+.p-tree-node-icon {
+  @apply text-surface-500;
+}
+
+.p-tree-node-content.p-tree-node-selected .p-tree-node-icon {
+  @apply text-primary;
+}
+
+.p-tree-filter {
+  @apply mb-2;
+}
+
+.p-tree-filter-input {
+  @apply w-full;
+}
+
+.p-tree-loading {
+  @apply relative h-full;
+}
+
+.p-tree-loading-icon {
+  @apply text-[2rem] size-8;
+}
+
+.p-tree .p-tree-mask {
+  @apply absolute z-10 flex items-center justify-center;
+}
+
+.p-tree-flex-scrollable {
+  @apply flex flex-1 h-full flex-col;
+}
+
+.p-tree-flex-scrollable .p-tree-root {
+  @apply flex-1;
+}

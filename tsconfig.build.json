@@ -34,7 +34,7 @@
         "src/components/*",
         "src/utils/*",
         "src/types/*",
-        "src/assets/**/*.vue",
+        "src/assets/*",
         "src/vite-env.d.ts",
         "src/theme.ts",
         "src/tailwind.config.ts",

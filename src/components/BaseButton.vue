@@ -5,13 +5,13 @@
 		:size="size"
 		:plain="plain"
 		:loading="loading"
+		:severity="severity"
 	>
-		<template #icon>
+		<template #icon="slotProps">
 			<slot name="icon">
 				<Component
 					:is="icon"
-					class="mr-0.5 size-4"
-					:class="iconCls"
+					:class="getIconCls(slotProps, iconCls)"
 				/>
 			</slot>
 		</template>
@@ -28,8 +28,14 @@ withDefaults(defineProps<IBaseButton>(), {
 	text: undefined,
 	icon: undefined,
 	iconCls: undefined,
+	severity: "normal",
 });
 defineSlots<{
 	icon(): VNode;
 }>();
+
+function getIconCls(slotProps: {class: string}, iconCls = "") {
+	iconCls += ` ${slotProps.class}`;
+	return iconCls;
+}
 </script>

@@ -1,0 +1,162 @@
+.p-button {
+  @apply inline-flex cursor-pointer select-none items-center justify-center overflow-hidden relative text-sm
+    transition-colors duration-200 rounded-md disabled:cursor-not-allowed;
+}
+
+.p-button:not(.p-button-icon-only) {
+  @apply gap-1;
+}
+
+.p-button:not(.p-button-plain, .p-button-icon-only) {
+  @apply px-3 py-2;
+}
+
+.p-button.p-button-icon-only {
+  &:not(.p-button-plain) {
+    @apply p-1;
+  }
+
+  & > .p-button-icon {
+    @apply fill-gray-800;
+  }
+
+  &.p-button-lg > .p-button-icon {
+    @apply size-6;
+  }
+
+  &.p-button-sm > .p-button-icon {
+    @apply size-4;
+  }
+}
+
+.p-button-icon-right {
+  @apply order-1;
+}
+
+.p-button-icon-right:dir(rtl) {
+  @apply order-[-1];
+}
+
+.p-button:not(.p-button-vertical) .p-button-icon:not(.p-button-icon-right):dir(rtl) {
+  @apply order-1;
+}
+
+.p-button-icon-bottom {
+  @apply order-2;
+}
+
+.p-button-icon-only.p-button-rounded {
+  @apply rounded-full;
+}
+
+.p-button-icon-only .p-button-label {
+  @apply hidden;
+}
+
+.p-button-sm {
+  @apply px-1 py-0.5 h-6;
+}
+
+.p-button-sm .p-button-icon {
+  @apply text-sm;
+}
+
+.p-button-lg {
+  @apply h-8;
+
+  & svg:not(.p-button-loading-icon) {
+    @apply size-5;
+  }
+}
+
+.p-button-vertical {
+  @apply flex-col;
+}
+
+.p-button-label {
+  @apply font-medium;
+}
+
+.p-button-fluid {
+  @apply w-full;
+}
+
+.p-button .p-badge {
+  @apply min-w-4 h-4 leading-4;
+}
+
+.p-button-raised {
+  @apply shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),0_2px_2px_0_rgba(0,0,0,0.14),0_1px_5px_0_rgba(0,0,0,0.12)];
+}
+
+.p-button-rounded {
+  @apply rounded-[2rem];
+}
+
+.p-button-normal:not(.p-button-plain) {
+  @apply bg-sky-200 enabled:hover:bg-sky-300 enabled:active:bg-sky-300 text-gray-800
+    focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-offset-sky-500 focus:ring-offset-2
+    focus:ring-sky-400;
+}
+
+.p-button-secondary {
+  @apply bg-slate-300 enabled:hover:bg-slate-400 enabled:active:bg-slate-400
+    focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-offset-slate-500 focus:ring-offset-2
+    focus:ring-slate-400;
+}
+
+.p-button-warn {
+  @apply bg-orange-300 enabled:hover:bg-orange-400 enabled:active:bg-orange-400
+    focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-offset-orange-500 focus:ring-offset-2
+    focus:ring-orange-500;
+}
+
+.p-button-danger {
+  @apply bg-red-600 enabled:hover:bg-red-700 enabled:active:bg-red-700 text-white
+    focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-offset-red-800 focus:ring-offset-2
+    focus:ring-red-700;
+
+  > .p-button-icon {
+    @apply fill-white;
+  }
+}
+
+.p-button-text {
+  @apply bg-transparent enabled:hover:bg-primary-50 enabled:active:bg-primary-100
+    border-transparent enabled:hover:border-transparent enabled:active:border-transparent
+    text-gray-800 enabled:hover:text-gray-800 enabled:active:text-gray-800;
+}
+
+.p-button-text.p-button-secondary {
+  @apply bg-transparent enabled:hover:bg-surface-50 enabled:active:bg-surface-100
+    border-transparent enabled:hover:border-transparent enabled:active:border-transparent
+    text-surface-500 enabled:hover:text-surface-500 enabled:active:text-surface-500;
+}
+
+.p-button-text.p-button-warn {
+  @apply bg-transparent enabled:hover:bg-orange-50 enabled:active:bg-orange-100
+    border-transparent enabled:hover:border-transparent enabled:active:border-transparent
+    text-orange-500 enabled:hover:text-orange-500 enabled:active:text-orange-500;
+}
+
+.p-button-text.p-button-danger {
+  @apply bg-transparent enabled:hover:bg-red-50 enabled:active:bg-red-100
+    border-transparent enabled:hover:border-transparent enabled:active:border-transparent
+    text-red-500 enabled:hover:text-red-500 enabled:active:text-red-500;
+}
+
+.p-button-text.p-button-plain {
+  @apply bg-transparent enabled:hover:bg-surface-50 enabled:active:bg-surface-100
+    border-transparent enabled:hover:border-transparent enabled:active:border-transparent
+    text-gray-800 enabled:hover:text-gray-800 enabled:active:text-gray-800;
+}
+
+.p-button-link {
+  @apply bg-transparent enabled:hover:bg-transparent enabled:active:bg-transparent
+    border-transparent enabled:hover:border-transparent enabled:active:border-transparent
+    text-gray-800 enabled:hover:text-gray-800 enabled:active:text-gray-800;
+}
+
+.p-button-link:not(:disabled):hover .p-button-label {
+  @apply underline;
+}

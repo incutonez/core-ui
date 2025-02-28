@@ -1,0 +1,26 @@
+.p-textarea {
+  @apply appearance-none rounded-md text-sm outline-none
+    ring-1 ring-inset ring-offset-0 ring-gray-500 enabled:focus:ring-sky-600
+    bg-white text-gray-800 disabled:bg-gray-200 disabled:opacity-100 placeholder:text-gray-500
+    disabled:cursor-not-allowed px-3 py-2 transition-colors duration-200 shadow-[0_1px_2px_0_rgba(18,18,23,0.05)];
+}
+
+.p-textarea.p-invalid {
+  @apply border-red-400;
+}
+
+.p-textarea-fluid {
+  @apply w-full;
+}
+
+.p-textarea-resizable {
+  @apply overflow-hidden resize-none;
+}
+
+.p-textarea-sm {
+  @apply text-sm py-1 px-2;
+}
+
+.p-textarea-lg {
+  @apply text-lg py-3 px-4;
+}

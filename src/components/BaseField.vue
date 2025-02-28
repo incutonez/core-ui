@@ -1,6 +1,6 @@
 <template>
 	<article
-		class="base-field flex min-w-0"
+		class="flex min-w-0"
 		:class="cls"
 	>
 		<FieldLabel
@@ -15,13 +15,8 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import FieldLabel, { IFieldLabel } from "@/components/FieldLabel.vue";
-
-export interface IBaseField {
-	label?: string;
-	labelPosition?: IFieldLabel["position"];
-	labelCls?: string;
-}
+import FieldLabel from "@/components/FieldLabel.vue";
+import { IBaseField } from "@/types/components";
 
 const props = withDefaults(defineProps<IBaseField>(), {
 	label: undefined,

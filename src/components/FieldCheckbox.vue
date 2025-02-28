@@ -3,17 +3,15 @@
 		<PrimeCheckbox
 			v-model="modelValue"
 			:binary="binary"
+			class="justify-self-center"
 		/>
 	</BaseField>
 </template>
 
 <script setup lang="ts">
 import PrimeCheckbox from "primevue/checkbox";
-import BaseField, { IBaseField } from "@/components/BaseField.vue";
-
-export interface IFieldCheckbox extends IBaseField {
-	binary?: boolean;
-}
+import BaseField from "@/components/BaseField.vue";
+import { IFieldCheckbox } from "@/types/components";
 
 withDefaults(defineProps<IFieldCheckbox>(), {
 	binary: true,
