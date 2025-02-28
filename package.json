@@ -41,6 +41,7 @@
     "@eslint/js": "^9.21.0",
     "@faker-js/faker": "^9.5.0",
     "@incutonez/eslint-plugin": "^1.1.4",
+    "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/exec": "^7.0.3",
     "@semantic-release/git": "^10.0.1",
     "@stylistic/eslint-plugin-ts": "^4.1.0",
@@ -75,6 +76,7 @@
     ]
   },
   "release": {
+    "preset": "angular",
     "branches": [
       "main"
     ],
@@ -88,6 +90,7 @@
         }
       ],
       "@semantic-release/git",
+      "@semantic-release/changelog",
       "@semantic-release/github"
     ]
   },

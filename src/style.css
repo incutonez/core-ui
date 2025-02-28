@@ -40,4 +40,12 @@
   ::file-selector-button {
     border-color: var(--color-gray-b, currentColor);
   }
+
+  a {
+    @apply underline text-blue-700;
+
+    &:visited {
+      @apply text-purple-700;
+    }
+  }
 }

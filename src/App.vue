@@ -2,6 +2,13 @@
 import { routes } from "@/router.ts";
 
 const pathSplitRe = /[A-Z][a-z]+/g;
+
+function getPathName(path: string) {
+	if (path === "/") {
+		return "Home";
+	}
+	return path.replace("/", "").match(pathSplitRe)!.join(" ");
+}
 </script>
 
 <template>
@@ -13,7 +20,7 @@ const pathSplitRe = /[A-Z][a-z]+/g;
 				:to="route.path"
 				class="underline text-blue-500"
 			>
-				{{ route.path.replace("/", "").match(pathSplitRe)!.join(" ") }}
+				{{ getPathName(route.path) }}
 			</RouterLink>
 		</section>
 		<section class="flex-1 overflow-hidden p-4">
