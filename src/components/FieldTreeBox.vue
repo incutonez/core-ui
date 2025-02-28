@@ -2,8 +2,8 @@
 import { computed, ref } from "vue";
 import PrimeTreeSelect from "primevue/treeselect";
 import BaseField from "@/components/BaseField.vue";
-import { ITreeNode } from "@/types";
 import { IFieldTreeBox, ITreeOption } from "@/types/components";
+import { ITreeNode } from "@/types/table";
 import { extractBaseFieldProps, isEmpty } from "@/utils/common";
 
 const props = withDefaults(defineProps<IFieldTreeBox>(), {
