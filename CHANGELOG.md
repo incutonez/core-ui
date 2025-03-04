@@ -1,3 +1,9 @@
+## [2.1.0](https://github.com/incutonez/core-ui/compare/v2.0.0...v2.1.0) (2025-03-04)
+
+### Features
+
+* Adding some reusable types for Models ([#21](https://github.com/incutonez/core-ui/issues/21)) ([e24c7d1](https://github.com/incutonez/core-ui/commit/e24c7d1ebcc67a5ae74aec92c4c40d4db45a1775))
+
 ## [2.0.0](https://github.com/incutonez/core-ui/compare/v1.4.0...v2.0.0) (2025-02-28)
 
 ### ⚠ BREAKING CHANGES
