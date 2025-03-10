@@ -1,3 +1,9 @@
+## [3.0.7](https://github.com/incutonez/core-ui/compare/v3.0.6...v3.0.7) (2025-03-10)
+
+### Bug Fixes
+
+* Adding tsx to devDeps ([#32](https://github.com/incutonez/core-ui/issues/32)) ([b511d04](https://github.com/incutonez/core-ui/commit/b511d0483eb8fe14235346b87fc284f4ca50368c))
+
 ## [3.0.6](https://github.com/incutonez/core-ui/compare/v3.0.5...v3.0.6) (2025-03-10)
 
 ### Bug Fixes
