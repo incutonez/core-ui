@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { version } from "@/../package.json";
 import { routes } from "@/router.ts";
 
 const pathSplitRe = /[A-Z][a-z]+/g;
@@ -23,8 +24,11 @@ function getPathName(path: string) {
 				{{ getPathName(route.path) }}
 			</RouterLink>
 		</section>
-		<section class="flex-1 overflow-hidden p-4">
+		<main class="flex-1 p-2 overflow-hidden">
 			<RouterView />
+		</main>
+		<section class="flex p-2">
+			<span class="ml-auto">v{{ version }}</span>
 		</section>
 	</article>
 </template>
