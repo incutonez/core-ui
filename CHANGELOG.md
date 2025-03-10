@@ -1,3 +1,9 @@
+## [3.0.9](https://github.com/incutonez/core-ui/compare/v3.0.8...v3.0.9) (2025-03-10)
+
+### Bug Fixes
+
+* Forgot export style is different for css files ([#34](https://github.com/incutonez/core-ui/issues/34)) ([d693217](https://github.com/incutonez/core-ui/commit/d693217ead16cfb81a29ec20377ea9de1af3edd9))
+
 ## [3.0.8](https://github.com/incutonez/core-ui/compare/v3.0.7...v3.0.8) (2025-03-10)
 
 ### Bug Fixes
