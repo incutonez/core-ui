@@ -27,15 +27,11 @@ jobs:
         run: npm set "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}"
       - name: Install dependencies
         run: npm clean-install
-      - name: Build UI
-        run: npm run build
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_TOKEN: ${{ secrets.SEMANTIC_RELEASE }}
         run: npx semantic-release --deps.bump=inherit
-      - name: Build GH Pages
-        run: npm run gh-pages
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:

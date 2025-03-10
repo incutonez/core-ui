@@ -21,7 +21,8 @@
     "dev": "vite --config vite/config.dev.ts",
     "build": "npx tsx makeIndex.ts && vite build --config vite/config.prod.ts",
     "gh-pages": "npx tsx makeIndex.ts && vite build --config vite/config.gh.ts",
-    "prepare": "husky"
+    "prepare": "husky",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@material-symbols/svg-400": "^0.28.2",
