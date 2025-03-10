@@ -119,8 +119,6 @@
     "./theme": {
       "import": "./dist/theme.js"
     },
-    "./theme.css": {
-      "import": "./dist/theme.css"
-    }
+    "./theme.css": "./dist/theme.css"
   }
 }
