@@ -1,3 +1,13 @@
+## [3.0.0](https://github.com/incutonez/core-ui/compare/v2.1.0...v3.0.0) (2025-03-10)
+
+### ⚠ BREAKING CHANGES
+
+* Separating CSS from build files (#22)
+
+### Features
+
+* Separating CSS from build files ([#22](https://github.com/incutonez/core-ui/issues/22)) ([53dc2e9](https://github.com/incutonez/core-ui/commit/53dc2e9c1ac8f3d957b4e0d4b73b31c074d4407d))
+
 ## [2.1.0](https://github.com/incutonez/core-ui/compare/v2.0.0...v2.1.0) (2025-03-04)
 
 ### Features
