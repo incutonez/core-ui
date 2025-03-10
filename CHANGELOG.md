@@ -1,3 +1,9 @@
+## [3.0.13](https://github.com/incutonez/core-ui/compare/v3.0.12...v3.0.13) (2025-03-10)
+
+### Bug Fixes
+
+* Fixing issue with Tailwind ignoring its classes in consuming apps that use this package's components ([#38](https://github.com/incutonez/core-ui/issues/38)) ([277b271](https://github.com/incutonez/core-ui/commit/277b2719e5cb5ab4b8220ca88518db308aa3583e))
+
 ## [3.0.12](https://github.com/incutonez/core-ui/compare/v3.0.11...v3.0.12) (2025-03-10)
 
 ### Bug Fixes
