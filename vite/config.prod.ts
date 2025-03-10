@@ -2,21 +2,14 @@ import tailwindcss from "@tailwindcss/vite";
 import vue from "@vitejs/plugin-vue";
 import path from "path";
 import { defineConfig } from "vite";
-import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 import dts from "vite-plugin-dts";
 import svgLoader from "vite-svg-loader";
 
 export default defineConfig({
 	base: "/core-ui/",
-	plugins: [
-		vue(),
-		svgLoader(),
-		tailwindcss(),
-		dts({
-			tsconfigPath: "tsconfig.build.json",
-		}),
-		cssInjectedByJsPlugin(),
-	],
+	plugins: [vue(), svgLoader(), tailwindcss(), dts({
+		tsconfigPath: "tsconfig.build.json",
+	})],
 	resolve: {
 		alias: [{
 			find: "@",
@@ -33,6 +26,8 @@ export default defineConfig({
 	build: {
 		emptyOutDir: true,
 		outDir: "dist",
+		cssCodeSplit: true,
+		cssMinify: false,
 		lib: {
 			entry: {
 				"components/index": "src/components/index.ts",
@@ -41,6 +36,7 @@ export default defineConfig({
 				"assets/index": "src/assets/index.ts",
 				theme: "src/theme.ts",
 				index: "src/index.ts",
+				"theme.css": "src/theme.css",
 			},
 			formats: ["es"],
 		},
