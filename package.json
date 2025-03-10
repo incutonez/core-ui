@@ -11,7 +11,7 @@
     "url": "git+https://github.com/incutonez/core-ui.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com/@incutonez"
   },
   "author": "incutonez@hotmail.com",
   "keywords": [
