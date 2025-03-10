@@ -8,10 +8,10 @@
   "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/incutonez/core-ui.git"
+    "url": "https://github.com/incutonez/core-ui.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@incutonez"
+    "registry": "https://npm.pkg.github.com"
   },
   "author": "incutonez@hotmail.com",
   "keywords": [
