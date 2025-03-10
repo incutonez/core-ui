@@ -1,3 +1,9 @@
+## [3.0.11](https://github.com/incutonez/core-ui/compare/v3.0.10...v3.0.11) (2025-03-10)
+
+### Bug Fixes
+
+* [@import](https://github.com/import) should be [@source](https://github.com/source) for relative paths ([#36](https://github.com/incutonez/core-ui/issues/36)) ([e556ba4](https://github.com/incutonez/core-ui/commit/e556ba4b96ea6a37f3a0ab5ee4e60fc6e7b36e05))
+
 ## [3.0.10](https://github.com/incutonez/core-ui/compare/v3.0.9...v3.0.10) (2025-03-10)
 
 ### Bug Fixes
