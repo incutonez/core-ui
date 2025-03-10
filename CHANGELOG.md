@@ -1,3 +1,9 @@
+## [3.0.2](https://github.com/incutonez/core-ui/compare/v3.0.1...v3.0.2) (2025-03-10)
+
+### Bug Fixes
+
+* Package Version Is 1 Behind Test ([#26](https://github.com/incutonez/core-ui/issues/26)) ([4a24a7e](https://github.com/incutonez/core-ui/commit/4a24a7e4f98108de42be173be4df43c3fbeee8dd))
+
 ## [3.0.1](https://github.com/incutonez/core-ui/compare/v3.0.0...v3.0.1) (2025-03-10)
 
 ### Bug Fixes
