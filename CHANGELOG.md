@@ -1,3 +1,9 @@
+## [3.0.5](https://github.com/incutonez/core-ui/compare/v3.0.4...v3.0.5) (2025-03-10)
+
+### Bug Fixes
+
+* Fixing publish config? ([#30](https://github.com/incutonez/core-ui/issues/30)) ([a899c21](https://github.com/incutonez/core-ui/commit/a899c2117ea4b270d1cb27cbe318f26a869396c5))
+
 ## [3.0.4](https://github.com/incutonez/core-ui/compare/v3.0.3...v3.0.4) (2025-03-10)
 
 ### Bug Fixes
