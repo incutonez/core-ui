@@ -1,10 +1,3 @@
-<template>
-	<PrimeContextMenu
-		ref="rootCmp"
-		:model="menuItems"
-	/>
-</template>
-
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import PrimeContextMenu from "primevue/contextmenu";
@@ -32,3 +25,10 @@ defineExpose({
 	hide,
 });
 </script>
+
+<template>
+	<PrimeContextMenu
+		ref="rootCmp"
+		:model="menuItems"
+	/>
+</template>
