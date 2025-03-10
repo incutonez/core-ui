@@ -100,7 +100,12 @@
         }
       ],
       "@semantic-release/git",
-      "@semantic-release/github"
+      [
+        "@semantic-release/github",
+        {
+          "publish": true
+        }
+      ]
     ]
   },
   "publishConfig": {
