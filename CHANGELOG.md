@@ -1,3 +1,9 @@
+## [3.0.12](https://github.com/incutonez/core-ui/compare/v3.0.11...v3.0.12) (2025-03-10)
+
+### Bug Fixes
+
+* Fixing import path to be relative ([#37](https://github.com/incutonez/core-ui/issues/37)) ([26ebf85](https://github.com/incutonez/core-ui/commit/26ebf85dd5d94a4c136aa1e03debe73613845589))
+
 ## [3.0.11](https://github.com/incutonez/core-ui/compare/v3.0.10...v3.0.11) (2025-03-10)
 
 ### Bug Fixes
