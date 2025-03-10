@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 @import "tailwindcss";
 @import "tailwindcss-primeui";
-@import "@/assets/theme/tailwind.css";
+@source "@/assets/theme/tailwind.css";
 
 /* Turning off the prefers-color-scheme mode
  * https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually */
