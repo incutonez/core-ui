@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/incutonez/core-ui.git"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "author": "incutonez@hotmail.com",
   "keywords": [
     "primevue",
@@ -94,23 +97,10 @@
         }
       ],
       "@semantic-release/changelog",
-      [
-        "@semantic-release/npm",
-        {
-          "npmPublish": false
-        }
-      ],
+      "@semantic-release/npm",
       "@semantic-release/git",
-      [
-        "@semantic-release/github",
-        {
-          "publish": true
-        }
-      ]
+      "@semantic-release/github"
     ]
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
   },
   "exports": {
     ".": {
