@@ -1,3 +1,9 @@
+## [3.0.3](https://github.com/incutonez/core-ui/compare/v3.0.2...v3.0.3) (2025-03-10)
+
+### Bug Fixes
+
+* Adding prepublishOnly to see if the build includes the latest changes IF it's deemed published by semantic release ([#27](https://github.com/incutonez/core-ui/issues/27)) ([f5dc307](https://github.com/incutonez/core-ui/commit/f5dc307b648321769e0bbb498e013f2081a048fb))
+
 ## [3.0.2](https://github.com/incutonez/core-ui/compare/v3.0.1...v3.0.2) (2025-03-10)
 
 ### Bug Fixes
