@@ -27,8 +27,6 @@ jobs:
         run: npm set "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}"
       - name: Install dependencies
         run: npm clean-install
-      - name: Build UI
-        run: npm run build
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
