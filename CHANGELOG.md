@@ -1,3 +1,9 @@
+## [3.0.1](https://github.com/incutonez/core-ui/compare/v3.0.0...v3.0.1) (2025-03-10)
+
+### Bug Fixes
+
+* Testing GH Release Config ([#24](https://github.com/incutonez/core-ui/issues/24)) ([0bf46ae](https://github.com/incutonez/core-ui/commit/0bf46ae5bee805b852317c9429ec90b84654c91c))
+
 ## [3.0.0](https://github.com/incutonez/core-ui/compare/v2.1.0...v3.0.0) (2025-03-10)
 
 ### ⚠ BREAKING CHANGES
