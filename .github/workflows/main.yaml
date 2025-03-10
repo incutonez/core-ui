@@ -32,6 +32,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_TOKEN: ${{ secrets.SEMANTIC_RELEASE }}
         run: npx semantic-release --deps.bump=inherit
+      - name: Build GH Pages
+        run: npm run gh-pages
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
