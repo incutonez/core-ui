@@ -1,3 +1,11 @@
-html, body, #app {
-    @apply h-full w-full;
+/**
+ * This import must be outside of our theme file, so it excludes any app based CSS.
+ * Source: https://github.com/tailwindlabs/tailwindcss/discussions/17025
+ */
+@import "@/theme.css";
+
+html,
+body,
+#app {
+  @apply h-full w-full;
 }
