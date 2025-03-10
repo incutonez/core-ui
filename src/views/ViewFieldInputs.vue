@@ -18,7 +18,7 @@ const selectedOption = ref<IOption>();
 const selectedTreeOption = ref<ITreeOption>();
 const isChecked = ref(true);
 const textAreaValue = ref("");
-const dateValue = ref("");
+const dateValue = ref(Date.now());
 const numberValue = ref(10);
 const comboLength = faker.number.int({
 	min: 10,
@@ -58,60 +58,64 @@ function generateTreeOption(treeComboLength = faker.number.int({
 </script>
 
 <template>
-	<article class="gap-4 flex flex-col">
-		<FieldText
-			label="Label Left"
-			input-width="w-64"
-		/>
-		<section class="flex gap-4">
+	<article class="flex overflow-auto gap-16 size-full">
+		<section class="flex flex-col gap-4">
 			<FieldText
-				label="Label Top"
+				label="Label Left"
 				input-width="w-64"
-				label-position="top"
 			/>
-			<FieldCheckbox
-				v-model="isChecked"
-				label="Checkbox"
-				label-position="top"
+			<section class="flex gap-4">
+				<FieldText
+					label="Label Top"
+					input-width="w-64"
+					label-position="top"
+				/>
+				<FieldCheckbox
+					v-model="isChecked"
+					label="Checkbox"
+					label-position="top"
+				/>
+			</section>
+			<FieldText
+				label="Disabled"
+				input-width="w-64"
+				disabled
+			/>
+			<FieldNumber
+				v-model="numberValue"
+				label="Number"
+				class="w-64"
 			/>
 		</section>
-		<FieldText
-			label="Disabled"
-			input-width="w-64"
-			disabled
-		/>
-		<FieldNumber
-			v-model="numberValue"
-			label="Number"
-			class="w-64"
-		/>
-		<FieldDate
-			v-model="dateValue"
-			label="Date"
-			class="w-64"
-		/>
-		<FieldDisplay
-			:value="dateValue"
-			label="Display"
-		/>
-		<FieldTextArea
-			v-model="textAreaValue"
-			label="Text Area"
-			label-position="top"
-			input-width="w-64"
-		/>
-		<FieldComboBox
-			v-model="selectedOption"
-			label="Combo Box"
-			dropdown-cls="max-w-64"
-			:options="comboOptions"
-			option-label="label"
-			option-value="value"
-		/>
-		<FieldTreeBox
-			v-model="selectedTreeOption"
-			:options="treeComboOptions"
-			label="Tree"
-		/>
+		<section class="flex flex-col gap-4">
+			<FieldDate
+				v-model="dateValue"
+				label="Date"
+				class="w-64"
+			/>
+			<FieldDisplay
+				:value="dateValue"
+				label="Display"
+			/>
+			<FieldTextArea
+				v-model="textAreaValue"
+				label="Text Area"
+				label-position="top"
+				input-width="w-64"
+			/>
+			<FieldComboBox
+				v-model="selectedOption"
+				label="Combo Box"
+				dropdown-cls="max-w-64"
+				:options="comboOptions"
+				option-label="label"
+				option-value="value"
+			/>
+			<FieldTreeBox
+				v-model="selectedTreeOption"
+				:options="treeComboOptions"
+				label="Tree"
+			/>
+		</section>
 	</article>
 </template>
