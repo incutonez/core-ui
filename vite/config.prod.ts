@@ -36,7 +36,6 @@ export default defineConfig({
 				"assets/index": "src/assets/index.ts",
 				theme: "src/theme.ts",
 				index: "src/index.ts",
-				"theme.css": "src/theme.css",
 			},
 			formats: ["es"],
 		},

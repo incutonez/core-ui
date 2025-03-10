@@ -1,4 +1,3 @@
-import "@/theme.css";
 import { App } from "vue";
 import PrimeVue from "primevue/config";
 
