@@ -2,6 +2,13 @@
 @import "tailwindcss";
 @import "tailwindcss-primeui";
 @import "./assets/theme/tailwind.css";
+/**
+ * This is absolutely necessary.  Because our build does not include actual CSS, Tailwind ignores all references to its
+ * classes in our components.  So to get over that, we can just source the entire root dir here, and it'll be picked up
+ * in the consuming apps.
+ * Source: https://github.com/tailwindlabs/tailwindcss/issues/15452#issuecomment-2646057265
+ */
+@source "./";
 
 /* Turning off the prefers-color-scheme mode
  * https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually */
