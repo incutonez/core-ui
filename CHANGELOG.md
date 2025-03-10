@@ -1,3 +1,9 @@
+## [3.0.4](https://github.com/incutonez/core-ui/compare/v3.0.3...v3.0.4) (2025-03-10)
+
+### Bug Fixes
+
+* Testing version bump deploy ([#29](https://github.com/incutonez/core-ui/issues/29)) ([470ffaa](https://github.com/incutonez/core-ui/commit/470ffaa82014f07ce5bd69fea2eb38baa7f7e79a))
+
 ## [3.0.3](https://github.com/incutonez/core-ui/compare/v3.0.2...v3.0.3) (2025-03-10)
 
 ### Bug Fixes
