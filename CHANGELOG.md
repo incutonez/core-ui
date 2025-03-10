@@ -1,3 +1,9 @@
+## [3.0.8](https://github.com/incutonez/core-ui/compare/v3.0.7...v3.0.8) (2025-03-10)
+
+### Bug Fixes
+
+* Forgot to add theme.css to export ([#33](https://github.com/incutonez/core-ui/issues/33)) ([54729a2](https://github.com/incutonez/core-ui/commit/54729a228342262e2bf641b5ac7c0fcb2f6cb90c))
+
 ## [3.0.7](https://github.com/incutonez/core-ui/compare/v3.0.6...v3.0.7) (2025-03-10)
 
 ### Bug Fixes
