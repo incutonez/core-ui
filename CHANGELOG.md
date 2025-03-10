@@ -1,3 +1,9 @@
+## [3.0.10](https://github.com/incutonez/core-ui/compare/v3.0.9...v3.0.10) (2025-03-10)
+
+### Bug Fixes
+
+* Excluding CSS from dist dir ([#35](https://github.com/incutonez/core-ui/issues/35)) ([7f6206e](https://github.com/incutonez/core-ui/commit/7f6206eb267ef9cebb489655fcfd5d9066263776))
+
 ## [3.0.9](https://github.com/incutonez/core-ui/compare/v3.0.8...v3.0.9) (2025-03-10)
 
 ### Bug Fixes
