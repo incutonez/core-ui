@@ -1,23 +1,3 @@
-<template>
-	<PrimeButton
-		:label="text"
-		:disabled="disabled"
-		:size="size"
-		:plain="plain"
-		:loading="loading"
-		:severity="severity"
-	>
-		<template #icon="slotProps">
-			<slot name="icon">
-				<Component
-					:is="icon"
-					:class="getIconCls(slotProps, iconCls)"
-				/>
-			</slot>
-		</template>
-	</PrimeButton>
-</template>
-
 <script setup lang="ts">
 import { VNode } from "vue";
 import PrimeButton from "primevue/button";
@@ -39,3 +19,23 @@ function getIconCls(slotProps: {class: string}, iconCls = "") {
 	return iconCls;
 }
 </script>
+
+<template>
+	<PrimeButton
+		:label="text"
+		:disabled="disabled"
+		:size="size"
+		:plain="plain"
+		:loading="loading"
+		:severity="severity"
+	>
+		<template #icon="slotProps">
+			<slot name="icon">
+				<Component
+					:is="icon"
+					:class="getIconCls(slotProps, iconCls)"
+				/>
+			</slot>
+		</template>
+	</PrimeButton>
+</template>
