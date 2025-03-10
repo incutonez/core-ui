@@ -1,3 +1,9 @@
+## [3.0.6](https://github.com/incutonez/core-ui/compare/v3.0.5...v3.0.6) (2025-03-10)
+
+### Bug Fixes
+
+* Fix??? ([#31](https://github.com/incutonez/core-ui/issues/31)) ([8f76899](https://github.com/incutonez/core-ui/commit/8f76899761b9d22538b9e3d2ab2394262769aba5))
+
 ## [3.0.5](https://github.com/incutonez/core-ui/compare/v3.0.4...v3.0.5) (2025-03-10)
 
 ### Bug Fixes
