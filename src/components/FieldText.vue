@@ -1,30 +1,36 @@
 <template>
-	<BaseField v-bind="$props">
-		<section class="relative flex-1">
-			<PrimeInputText
-				ref="libCmp"
-				v-model="modelValue"
-				:class="inputCls"
-				:type="type"
-				:disabled="disabled"
-				@keyup="onKeyUp"
-				@blur="onBlur"
-			/>
-			<BaseButton
-				v-if="clearVisible"
-				tabindex="-1"
-				class="absolute right-2 top-1.5 cursor-pointer"
-				unstyled
-				:icon="IconClear"
-				icon-cls="h-5 w-6 fill-gray-600 hover:fill-red-700"
-				@click="onClickClear"
-			/>
-		</section>
-	</BaseField>
+  <BaseField v-bind="$props">
+    <section class="relative flex-1">
+      <PrimeInputText
+        ref="libCmp"
+        v-model="modelValue"
+        :class="inputCls"
+        :type="type"
+        :disabled="disabled"
+        @keyup="onKeyUp"
+        @blur="onBlur"
+      />
+      <BaseButton
+        v-if="clearVisible"
+        tabindex="-1"
+        class="absolute right-2 top-1.5 cursor-pointer"
+        unstyled
+        :icon="IconClear"
+        icon-cls="h-5 w-6 fill-gray-600 hover:fill-red-700"
+        @click="onClickClear"
+      />
+    </section>
+  </BaseField>
 </template>
 
 <script setup lang="ts">
-import { ComponentInstance, computed, onMounted, ref, unref, watch } from "vue";
+import {
+	computed,
+	onMounted,
+	unref,
+	useTemplateRef,
+	watch,
+} from "vue";
 import PrimeInputText from "primevue/inputtext";
 import IconClear from "@/assets/IconClear.vue";
 import BaseButton from "@/components/BaseButton.vue";
@@ -40,7 +46,7 @@ const props = withDefaults(defineProps<IFieldText>(), {
 const emit = defineEmits(["inputEnd", "inputClear", "blur"]);
 const modelValue = defineModel<string>();
 let inputEndTimer: ReturnType<typeof setTimeout>;
-const libCmp = ref<ComponentInstance<typeof PrimeInputText>>();
+const libCmp = useTemplateRef("libCmp");
 const clearVisible = computed(() => props.showClear && !!modelValue.value);
 const inputCls = computed(() => {
 	return {
@@ -66,8 +72,10 @@ function onBlur() {
 function selectInputText() {
 	const $libCmp = unref(libCmp);
 	if ($libCmp) {
+		// @ts-expect-error Fix later
 		$libCmp.$el.focus();
 		// Need a slight delay
+		// @ts-expect-error Fix later
 		setTimeout(() => $libCmp.$el.select(), 0);
 	}
 }
@@ -82,6 +90,7 @@ onMounted(() => {
 	const $libCmp = unref(libCmp);
 	if ($libCmp) {
 		if (props.autoFocus) {
+			// @ts-expect-error Fix later
 			$libCmp.$el.focus();
 		}
 		if (props.autoSelect) {
